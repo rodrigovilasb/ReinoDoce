@@ -192,7 +192,7 @@ body {
     margin: auto;
 }
 
-.hero-section {
+.secao-inicial {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -207,17 +207,19 @@ body {
     gap: 30px;
 }
 
-.hero-content h1 {
+.conteudo-inicial h1 {
     font-family: var(--font-family-heading);
     font-size: 3.5em;
     margin-bottom: 15px;
     color: var(--primary-color);
+    text-align: center;
 }
 
-.hero-content p {
+.conteudo-inicial p {
     font-size: 1.4em;
     max-width: 700px;
     margin: 0 auto 20px auto;
+    text-align: center;
 }
 
 .hero-image {
@@ -376,13 +378,13 @@ body {
 
 
 @media (min-width: 768px) {
-    .hero-section {
+    .secao-inicial {
         flex-direction: row;
         text-align: left;
         padding: 80px 40px;
     }
 
-    .hero-content {
+    .conteudo-inicial {
         flex: 1;
         padding-right: 30px;
     }
@@ -399,10 +401,10 @@ body {
 }
 
 @media (max-width: 767px) {
-    .hero-content h1 {
+    .conteudo-inicial h1 {
         font-size: 2.5em;
     }
-    .hero-content p {
+    .conteudo-inicial p {
         font-size: 1.2em;
     }
     .side-menu a {
