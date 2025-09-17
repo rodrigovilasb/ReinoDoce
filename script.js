@@ -1,50 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const splashScreen = document.getElementById('splash-screen');
-    const mainHeader = document.getElementById('main-header');
-    const mainContent = document.getElementById('main-content');
-    const footer = document.querySelector('.footer');
-    
+    const telaCarregamento = document.getElementById('tela-carregamento');
+    const cabecalhoPrincipal = document.getElementById('cabecalho-principal');
+    const conteudoPrincipal = document.getElementById('conteudo-principal');
+    const rodape = document.querySelector('.rodape');
+    const listaCarrinho = document.getElementById('lista-carrinho');
+    const msgCarrinhoVazio = document.getElementById('msg-carrinho-vazio');
+    const botoesAdicionarCarrinho = document.querySelectorAll('.adicionar-carrinho');
+    const contadorCarrinho = document.getElementById('contador-carrinho');
+    const carrinhoDropdown = document.getElementById('carrinho-dropdown');
+
+    // Array para armazenar os itens do carrinho
+    let itensCarrinho = [];
+
     // Simula um tempo de carregamento de 3 segundos
     setTimeout(() => {
-        splashScreen.style.opacity = '0';
+        telaCarregamento.style.opacity = '0';
         setTimeout(() => {
-            splashScreen.style.display = 'none';
-            mainHeader.style.display = 'flex';
-            mainContent.style.display = 'block';
-            footer.style.display = 'block';
+            telaCarregamento.style.display = 'none';
+            cabecalhoPrincipal.style.display = 'flex';
+            conteudoPrincipal.style.display = 'block';
+            rodape.style.display = 'block';
         }, 1000); // Tempo para a animação de fade-out
     }, 3000); // 3 segundos antes de começar a transição
 
-    const cartList = document.getElementById('cart-list');
-    const cartEmptyMsg = document.getElementById('cart-empty-msg');
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-
     // Função para abrir e fechar o menu
-    window.toggleMenu = function() {
-        const sideMenu = document.getElementById('sideMenu');
-        sideMenu.style.width = sideMenu.style.width === '280px' ? '0' : '280px';
+    window.alternarMenu = function() {
+        const menuLateral = document.getElementById('menuLateral');
+        menuLateral.style.width = menuLateral.style.width === '280px' ? '0' : '280px';
+    }
+
+    // Função para abrir/fechar o dropdown do carrinho
+    window.alternarDropdownCarrinho = function() {
+        if (carrinhoDropdown.style.display === 'block') {
+            carrinhoDropdown.style.display = 'none';
+        } else {
+            carrinhoDropdown.style.display = 'block';
+        }
+    }
+
+    // Atualiza o contador e a lista do carrinho
+    function atualizarCarrinho() {
+        contadorCarrinho.textContent = itensCarrinho.length;
+        listaCarrinho.innerHTML = '';
+        if (itensCarrinho.length === 0) {
+            msgCarrinhoVazio.style.display = 'block';
+        } else {
+            msgCarrinhoVazio.style.display = 'none';
+            itensCarrinho.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item}</span>`;
+                listaCarrinho.appendChild(li);
+            });
+        }
     }
 
     // Funcionalidade do Carrinho
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productName = button.dataset.product;
-            addItemToCart(productName);
+    botoesAdicionarCarrinho.forEach(botao => {
+        botao.addEventListener('click', () => {
+            const nomeProduto = botao.dataset.produto;
+            itensCarrinho.push(nomeProduto);
+            atualizarCarrinho();
+            alert(nomeProduto + " foi adicionado ao seu carrinho!");
         });
     });
 
-    function addItemToCart(productName) {
-        if (cartEmptyMsg) {
-            cartEmptyMsg.style.display = 'none';
-        }
-
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span>${productName}</span>
-        `;
-        cartList.appendChild(li);
-        alert(productName + " foi adicionado ao seu carrinho!");
-    }
+    // Inicializa o carrinho vazio
+    atualizarCarrinho();
 });
 
 // Inicialização do Google Maps

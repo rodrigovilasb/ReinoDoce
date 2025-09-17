@@ -10,22 +10,28 @@
 </head>
 <body>
 
-<div id="splash-screen">
-    <div class="splash-content">
-        <h1 class="splash-logo">Reino Doce</h1>
-        <div class="spinner"></div>
+<div id="tela-carregamento">
+    <div class="conteudo-carregamento">
+        <h1 class="logo-carregamento">Reino Doce</h1>
+        <div class="carregando"></div>
     </div>
 </div>
 
-<header class="top-bar" id="main-header">
+<header class="barra-topo" id="cabecalho-principal">
     <div class="logo">Reino Doce</div>
-    <button class="menu-btn" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars fa-2x"></i>
-    </button>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button class="botao-carrinho" onclick="alternarDropdownCarrinho()" aria-label="Abrir carrinho">
+            <i class="fa-solid fa-shopping-cart"></i>
+            <span id="contador-carrinho">0</span>
+        </button>
+        <button class="botao-menu" onclick="alternarMenu()">
+            <i class="fa-solid fa-bars fa-2x"></i>
+        </button>
+    </div>
 </header>
 
-<nav class="side-menu" id="sideMenu">
-    <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">×</a>
+<nav class="menu-lateral" id="menuLateral">
+    <a href="javascript:void(0)" class="botao-fechar" onclick="alternarMenu()">×</a>
     <a href="#inicio">Início</a>
     <a href="#about">Sobre nós</a>
     <a href="#mvv">Missão, Visão e Valores</a>
@@ -38,7 +44,7 @@
     <a href="#cart">Carrinho</a>
 </nav>
 
-<main class="content" id="main-content">
+<main class="conteudo" id="conteudo-principal">
     
     <section id="inicio" class="secao-inicial">
         <div class="conteudo-inicial">
@@ -51,13 +57,13 @@
     
     </section>
 
-    <section id="about" class="section">
-        <h2 class="section-title">Sobre nós</h2>
+    <section id="about" class="secao">
+        <h2 class="titulo-secao">Sobre nós</h2>
         <p>A Reino Doce é a maior e mais inovadora indústria de doces do Brasil, dedicada a criar momentos de pura felicidade. Desde a nossa fundação, nossa missão tem sido transformar ingredientes de alta qualidade em doces que encantam os paladares e despertam memórias afetivas. Com uma produção em escala industrial, garantimos que a doçura do nosso trabalho alcance cada lar brasileiro, mantendo sempre a nossa essência artesanal e o carinho em cada detalhe.</p>
     </section>
 
-    <section id="mvv" class="section">
-        <h2 class="section-title">Missão, Visão e Valores</h2>
+    <section id="mvv" class="secao">
+        <h2 class="titulo-secao">Missão, Visão e Valores</h2>
         <div class="mvv-container">
             <div>
                 <h3>Missão</h3>
@@ -80,90 +86,86 @@
         </div>              
     </section>
                                                                                                             
-    <section id="products" class="section">
-        <h2 class="section-title">Nossos Produtos</h2>
+    <section id="products" class="secao">
+        <h2 class="titulo-secao">Nossos Produtos</h2>
         <p>Descubra a variedade que a Reino Doce oferece. Cada produto é uma obra-prima de sabor.</p>
-        <div class="product-grid">
-            <div class="product-card">
+        <div class="grade-produtos">
+            <div class="cartao-produto">
                 <img src="img/morango.png" alt="Doce de Morango">
                 <h3>Morango Reinado</h3>
                 <p>Um doce de morango cremoso e com um sabor inconfundível que lembra a infância.</p>
-                <button class="add-to-cart-btn" data-product="Moranguinho Feliz">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Moranguinho Feliz">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/chocolate.png" alt="Chocolate Crocante">
                 <h3>Chocolate Supremo</h3>
                 <p>A combinação perfeita de chocolate amargo e flocos crocantes para uma experiência inesquecível.</p>
-                <button class="add-to-cart-btn" data-product="Chocolate Supremo">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Chocolate Supremo">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/caramelo.png" alt="Bala de Caramelo">
                 <h3>Bala Reino</h3>
                 <p>Nossa bala de caramelo tradicional, macia por dentro e com um sabor que derrete na boca.</p>
-                <button class="add-to-cart-btn" data-product="Bala Reino">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Bala Reino">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/jujuba.png" alt="Jujuba Sortida">
                 <h3>Jujubas Coloridas</h3>
                 <p>Uma explosão de cores e sabores frutados em uma única embalagem. Ideal para a diversão!</p>
-                <button class="add-to-cart-btn" data-product="Jujubas Coloridas">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Jujubas Coloridas">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/suspiro.png" alt="Suspiro Doce">
                 <h3>Suspiro de Nuvens</h3>
                 <p>Leves, crocantes e com a doçura do açúcar. Nossos suspiros são a alegria das festas.</p>
-                <button class="add-to-cart-btn" data-product="Suspiro de Nuvens">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Suspiro de Nuvens">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/abobora.png" alt="Doce de Abóbora">
                 <h3>Doce de Abóbora da Vovó</h3>
                 <p>Um clássico que combina o sabor caseiro com nossa produção em escala industrial.</p>
-                <button class="add-to-cart-btn" data-product="Doce de Abóbora da Vovó">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Doce de Abóbora da Vovó">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/goiabada.png" alt="Goiabada">
                 <h3>Goiabada Delícia</h3>
                 <p>Feita com goiabas selecionadas, nossa goiabada é perfeita para qualquer ocasião.</p>
-                <button class="add-to-cart-btn" data-product="Goiabada Delícia">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Goiabada Delícia">Adicionar ao Carrinho</button>
             </div>
-            <div class="product-card">
+            <div class="cartao-produto">
                 <img src="img/amendoim.png" alt="Crocante de Amendoim">
                 <h3>Crocante de Amendoim Real</h3>
                 <p>A crocância irresistível do amendoim em uma barra de doce que você não vai conseguir parar de comer.</p>
-                <button class="add-to-cart-btn" data-product="Crocante de Amendoim Real">Adicionar ao Carrinho</button>
+                <button class="adicionar-carrinho" data-produto="Crocante de Amendoim Real">Adicionar ao Carrinho</button>
             </div>
         </div>
     </section>
 
-    <section id="cart" class="section">
-        <h2 class="section-title">Seu Carrinho</h2>
-        <ul id="cart-list"></ul>
-        <p id="cart-empty-msg">Seu carrinho está vazio.</p>
-    </section>
 
-    <section id="near-you" class="section">
-        <h2 class="section-title">Perto de você</h2>
+
+    <section id="near-you" class="secao">
+        <h2 class="titulo-secao">Perto de você</h2>
         <p>Encontre a loja ou ponto de distribuição mais próximo de você. Estamos espalhados por todo o Brasil para adoçar o seu dia!</p>
         <p>Acesse nossa localização completa no Google Maps:</p>
         <a href="https://www.google.com/maps" target="_blank" class="btn">Ver no Google Maps</a>
     </section>
 
-    <section id="work-with-us" class="section">
-        <h2 class="section-title">Trabalhe Conosco</h2>
+    <section id="work-with-us" class="secao">
+        <h2 class="titulo-secao">Trabalhe Conosco</h2>
         <p>Faça parte da nossa equipe e ajude a espalhar a felicidade. Estamos sempre em busca de talentos que compartilhem de nossa paixão pela qualidade e inovação. Seu futuro doce começa aqui!</p>
         <a href="https://wa.me/5511999998888?text=Ol%C3%A1%2C%20gostaria%20de%20enviar%20meu%20curr%C3%ADculo." target="_blank" class="btn-whatsapp">
             <i class="fab fa-whatsapp"></i> Envie seu Currículo
         </a>
     </section>
     
-    <section id="partnerships" class="section">
-        <h2 class="section-title">Parcerias</h2>
+    <section id="partnerships" class="secao">
+        <h2 class="titulo-secao">Parcerias</h2>
         <p>O sucesso da Reino Doce é construído em parcerias sólidas. Se você tem um negócio e deseja revender nossos produtos ou fazer uma parceria de distribuição, entre em contato. Juntos, podemos levar nossos doces para mais pessoas e crescer ainda mais.</p>
         <a href="#contact" class="btn">Fale Conosco sobre Parcerias</a>
     </section>
     
-    <section id="contact" class="section">
-        <h2 class="section-title">Contato</h2>
+    <section id="contact" class="secao">
+        <h2 class="titulo-secao">Contato</h2>
         <p>Tem alguma dúvida, sugestão ou feedback? Adoraríamos ouvir você!</p>
         <p><i class="fa-solid fa-phone-alt"></i> Telefone: (11) 5555-1234</p>
         <p><i class="fa-solid fa-envelope"></i> E-mail: contato@reinodoce.com.br</p>
@@ -175,19 +177,25 @@
         </div>
     </section>
     
-    <section id="international" class="section">
-        <h2 class="section-title">Compra internacional</h2>
+    <section id="international" class="secao">
+        <h2 class="titulo-secao">Compra internacional</h2>
         <p>Exportamos a doçura do Brasil para o mundo! Se você é um distribuidor internacional ou um varejista, consulte nosso catálogo exclusivo para compra internacional. Nossos doces estão prontos para cruzar fronteiras.</p>
     </section>
 
 </main>
 
-<footer class="footer">
-    <div class="footer-content">
+<footer class="rodape">
+    <div class="conteudo-rodape">
         <p>&copy; 2025 ReinoDoce. Todos os direitos reservados.</p>
     </div>
 </footer>
 
+<div id="carrinho-dropdown" class="carrinho-fixo">
+    <h3>Seu Carrinho</h3>
+    <ul id="lista-carrinho"></ul>
+    <p id="msg-carrinho-vazio">Seu carrinho está vazio.</p>
+    <button onclick="alternarDropdownCarrinho()">Fechar</button>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
