@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Produtos - Reino Doce</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="icon" href="img/logo.png">
+</head>
+<body>
+	<header class="barra-topo" id="cabecalho-principal">
+	    <div class="logo">Reino Doce</div>
+	    <div style="display: flex; align-items: center; gap: 20px;">
+	        <button class="botao-carrinho" onclick="alternarDropdownCarrinho()" aria-label="Abrir carrinho">
+	            <i class="fa-solid fa-shopping-cart"></i>
+	            <span id="contador-carrinho">0</span>
+	        </button>
+	        <button class="botao-menu" onclick="alternarMenu()">
+	            <i class="fa-solid fa-bars fa-2x"></i>
+	        </button>
+	    </div>
+	</header>
+
+	<nav class="menu-lateral" id="menuLateral">
+	    <a href="javascript:void(0)" class="botao-fechar" onclick="alternarMenu()">×</a>
+	    <a href="inicio.html">Início</a>
+	    <a href="sobre.html">Sobre nós</a>
+	    <a href="missao-visao-valores.html">Missão, Visão e Valores</a>
+	    <a href="produtos.html">Produtos</a>
+	    <a href="perto-de-voce.html">Perto de você</a>
+	    <a href="parcerias.html">Parcerias</a>
+	    <a href="trabalhe-conosco.html">Trabalhe conosco</a>
+	    <a href="contato.html">Contato</a>
+	    <a href="compra-internacional.html">Compra internacional</a>
+	    <a href="carrinho.html">Carrinho</a>
+	</nav>
+
+	<main class="conteudo">
+	    <section id="products" class="secao">
+	        <h2 class="titulo-secao">Nossos Produtos</h2>
+	        <p>Descubra a variedade que a Reino Doce oferece. Cada produto é uma obra-prima de sabor.</p>
+	        <div class="grade-produtos">
+	            <!-- ...existing product cards... -->
+	            <div class="cartao-produto">
+	                <img src="img/morango.png" alt="Doce de Morango">
+	                <h3>Morango Reinado</h3>
+	                <p>Um doce de morango cremoso e com um sabor inconfundível que lembra a infância.</p>
+	                <button class="adicionar-carrinho" data-produto="Moranguinho Feliz">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/chocolate.png" alt="Chocolate Crocante">
+	                <h3>Chocolate Supremo</h3>
+	                <p>A combinação perfeita de chocolate amargo e flocos crocantes para uma experiência inesquecível.</p>
+	                <button class="adicionar-carrinho" data-produto="Chocolate Supremo">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/caramelo.png" alt="Bala de Caramelo">
+	                <h3>Bala Reino</h3>
+	                <p>Nossa bala de caramelo tradicional, macia por dentro e com um sabor que derrete na boca.</p>
+	                <button class="adicionar-carrinho" data-produto="Bala Reino">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/jujuba.png" alt="Jujuba Sortida">
+	                <h3>Jujubas Coloridas</h3>
+	                <p>Uma explosão de cores e sabores frutados em uma única embalagem. Ideal para a diversão!</p>
+	                <button class="adicionar-carrinho" data-produto="Jujubas Coloridas">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/suspiro.png" alt="Suspiro Doce">
+	                <h3>Suspiro de Nuvens</h3>
+	                <p>Leves, crocantes e com a doçura do açúcar. Nossos suspiros são a alegria das festas.</p>
+	                <button class="adicionar-carrinho" data-produto="Suspiro de Nuvens">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/abobora.png" alt="Doce de Abóbora">
+	                <h3>Doce de Abóbora da Vovó</h3>
+	                <p>Um clássico que combina o sabor caseiro com nossa produção em escala industrial.</p>
+	                <button class="adicionar-carrinho" data-produto="Doce de Abóbora da Vovó">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/goiabada.png" alt="Goiabada">
+	                <h3>Goiabada Delícia</h3>
+	                <p>Feita com goiabas selecionadas, nossa goiabada é perfeita para qualquer ocasião.</p>
+	                <button class="adicionar-carrinho" data-produto="Goiabada Delícia">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/amendoim.png" alt="Crocante de Amendoim">
+	                <h3>Crocante de Amendoim Real</h3>
+	                <p>A crocância irresistível do amendoim em uma barra de doce que você não vai conseguir parar de comer.</p>
+	                <button class="adicionar-carrinho" data-produto="Crocante de Amendoim Real">Adicionar ao Carrinho</button>
+	            </div>
+	            <div class="cartao-produto">
+	                <img src="img/brigadeiro.png" alt="Brigadeiro Gourmet">
+	                <h3>Brigadeiro Gourmet</h3>
+	                <p>Nosso brigadeiro é feito com chocolate de alta qualidade e um toque especial que o torna único.</p>
+	                <button class="adicionar-carrinho" data-produto="Brigadeiro Gourmet">Adicionar ao Carrinho</button>
+	            </div>
+	        </div>
+	    </section>
+	</main>
+
+	<footer class="rodape">
+	    <div class="conteudo-rodape">
+	        <p>&copy; 2025 ReinoDoce. Todos os direitos reservados.</p>
+	    </div>
+	</footer>
+
+	<div id="carrinho-dropdown" class="carrinho-fixo">
+	    <h3>Seu Carrinho</h3>
+	    <ul id="lista-carrinho"></ul>
+	    <p id="msg-carrinho-vazio">Seu carrinho está vazio.</p>
+	    <button onclick="alternarDropdownCarrinho()">Fechar</button>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
