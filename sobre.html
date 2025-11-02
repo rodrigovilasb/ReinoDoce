@@ -1,61 +1,174 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sobre nós - Reino Doce</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="icon" href="img/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa História | Reino Doce</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="barra-topo" id="cabecalho-principal">
-	    <div class="logo">Reino Doce</div>
-	    <div style="display: flex; align-items: center; gap: 20px;">
-	        <button class="botao-carrinho" onclick="alternarDropdownCarrinho()" aria-label="Abrir carrinho">
-	            <i class="fa-solid fa-shopping-cart"></i>
-	            <span id="contador-carrinho">0</span>
-	        </button>
-	        <button class="botao-menu" onclick="alternarMenu()">
-	            <i class="fa-solid fa-bars fa-2x"></i>
-	        </button>
-	    </div>
-	</header>
 
-	<nav class="menu-lateral" id="menuLateral">
-	    <a href="javascript:void(0)" class="botao-fechar" onclick="alternarMenu()">×</a>
-	    <a href="inicio.html">Início</a>
-	    <a href="sobre.html">Sobre nós</a>
-	    <a href="missao-visao-valores.html">Missão, Visão e Valores</a>
-	    <a href="produtos.html">Produtos</a>
-	    <a href="perto-de-voce.html">Perto de você</a>
-	    <a href="parcerias.html">Parcerias</a>
-	    <a href="trabalhe-conosco.html">Trabalhe conosco</a>
-	    <a href="contato.html">Contato</a>
-	    <a href="compra-internacional.html">Compra internacional</a>
-	    <a href="carrinho.html">Carrinho</a>
-	</nav>
+    <header>
+        <div class="logo">
+            <h1>Reino Doce.</h1>
+        </div>
+        <nav>
+            <a href="sobre.html">Nossa História</a>
+            <a href="produtos.html">Coleção Gourmet</a> 
+            <a href="index.html#internacional">Logística Global</a>
+            <a href="index.html#garantia">Nossa Garantia</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+        <button class="carrinho-btn" id="abrir-carrinho" title="Ver Carrinho">
+            <span class="icone">🛍️</span> Carrinho (<span id="contador-carrinho">0</span>)
+        </button>
+    </header>
 
-	<main class="conteudo">
-	    <section id="about" class="secao">
-	        <h2 class="titulo-secao">Sobre nós</h2>
-	        <p>A Reino Doce é a maior e mais inovadora indústria de doces do Brasil, dedicada a criar momentos de pura felicidade. Desde a nossa fundação, nossa missão tem sido transformar ingredientes de alta qualidade em doces que encantam os paladares e despertam memórias afetivas. Com uma produção em escala industrial, garantimos que a doçura do nosso trabalho alcance cada lar brasileiro, mantendo sempre a nossa essência artesanal e o carinho em cada detalhe.</p>
-	    </section>
-	</main>
+    <section class="banner-principal sobre-banner">
+        <h2>A Essência da Confeitaria Fina</h2>
+        <p class="subtitulo">Nossa história: Uma jornada de paixão, ingredientes raros e excelência global.</p>
+    </section>
 
-	<footer class="rodape">
-	    <div class="conteudo-rodape">
-	        <p>&copy; 2025 ReinoDoce. Todos os direitos reservados.</p>
-	    </div>
-	</footer>
+    <section class="secao-narrativa">
+        <h2>Raízes e Inspiração</h2>
+        <div class="historia-container">
+            <div class="historia-coluna">
+                <p>A empresa <span class="destaque-marrom">Reino Doce</span> foi fundada no Estado de São Paulo, no ano de 2010, por quatro administradores apaixonados por doces. Montaram, inicialmente, somente uma fábrica em SP, tendo expandido para demais locais do Brasil após auferir sucesso de vendas e fama dentre a massa consumidora, </p>
+                
+                <p>que sempre ressalta o zelo pela <span class="destaque-marrom">qualidade dos produtos e preços baixos da empresa</span>. Não limitados pelas fronteiras, ainda expandimos operações para locais estrangeiros, levando o sabor irresistível de nossos doces para várias pessoas. </p>
+                
+                <p>Recusamos corantes e conservantes artificiais, utilizando apenas manteiga de verdade, frutas frescas, especiarias raras e o melhor chocolate do mundo. Cada receita é uma homenagem à tradição, aprimorada com técnicas modernas.</p>
+            </div>
+            <div class="historia-coluna">
+                <img src="empresa pessoas Reinodoce.png" alt="Imagem de uma cozinha artesanal e clássica, cheia de história.">
+            </div>
+        </div>
+    </section>
 
-	<div id="carrinho-dropdown" class="carrinho-fixo">
-	    <h3>Seu Carrinho</h3>
-	    <ul id="lista-carrinho"></ul>
-	    <p id="msg-carrinho-vazio">Seu carrinho está vazio.</p>
-	    <button onclick="alternarDropdownCarrinho()">Fechar</button>
-	</div>
+    <section class="secao-pilares">
+        <h3>Nossos Pilares de Excelência</h3>
+        <p class="subtitulo">Valores que orientam nossa produção e nossa logística.</p>
+        <div class="pilares-grid">
+            <div class="pilar-card">
+                <h4>Matéria-Prima</h4>
+                <p>Seleção rigorosa dos ingredientes mais finos e éticos, garantindo sabor puro e superior em cada mordida.</p>
+            </div>
+            <div class="pilar-card">
+                <h4>Inovação & Arte</h4>
+                <p>Combinação da arte da confeitaria tradicional com a inovação em sabores, design e embalagens refrigeradas.</p>
+            </div>
+            <div class="pilar-card">
+                <h4>Logística de Luxo</h4>
+                <p>Garantia de que a experiência do Reino Doce chegue impecável, fresca e elegante, em qualquer lugar do mundo.</p>
+            </div>
+        </div>
+        <a href="produtos.html" class="btn-destaque" style="margin-top: 40px;">Descubra a Coleção Gourmet</a>
+    </section>
 
-	<script src="script.js"></script>
+    <section class="garantia" id="garantia">
+        <h2>Nossa Promessa de Frescor</h2>
+        <p class="subtitulo">A qualidade é inegociável, desde a produção até a sua mesa.</p>
+
+        <div class="garantia-detalhes">
+            <div class="detalhe-card">
+                <h4>Embalagem Refrigerada Ativa</h4>
+                <p>Utilizamos embalagens isotérmicas de última geração com gel refrigerante para manter a temperatura ideal durante todo o transporte, garantindo o frescor e a textura.</p>
+            </div>
+            <div class="detalhe-card">
+                <h4>Rastreamento e Entrega Expressa</h4>
+                <p>Parceria com as melhores transportadoras. Você acompanha cada passo da sua encomenda e recebe seus doces em tempo recorde, preservando o sabor.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="rodape-conteudo">
+            <div class="rodape-coluna">
+                <h4>Reino Doce</h4>
+                <p>Confeitaria de Alta Gama</p>
+                <p>Rua Gourmet, 123 - São Paulo, SP, Brasil</p>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Institucional</h4>
+                <a href="sobre.html">Nossa História</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Ajuda e Suporte</h4>
+                <a href="#">Rastrear Pedido</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">FAQ - Perguntas Frequentes</a>
+            </div>
+        </div>
+        <p class="copy">&copy; 2025 Reino Doce. Logística Global de Sabor. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modal-carrinho" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-carrinho">&times;</span>
+            <h2>🛍️ Seu Carrinho de Compras</h2>
+            
+            <div id="itens-carrinho-lista">
+                <p style="text-align: center; color: var(--cor-texto-secundario);" id="mensagem-vazio">Seu carrinho está vazio.</p>
+            </div>
+            
+            <hr>
+            
+            <div class="carrinho-total">
+                <p>Subtotal: <span id="carrinho-subtotal">R$ 0,00</span></p>
+                <p>Envio (Estimado): R$ 0,00</p>
+                <h3>Total Geral: <span id="carrinho-total-geral">R$ 0,00</span></h3>
+            </div>
+
+            <div class="carrinho-acoes">
+                <button class="btn-destaque" id="finalizar-compra-btn">Finalizar Compra</button>
+                <button class="btn-limpar" id="limpar-carrinho">Limpar Carrinho</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-checkout" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-checkout">&times;</span>
+            <h2>📦 Checkout Rápido</h2>
+            <p class="subtitulo">Preencha seus dados para prosseguir com a embalagem refrigerada.</p>
+            
+            <form id="formulario-checkout" onsubmit="processarCheckout(event)">
+                <input type="text" id="checkout-nome" placeholder="Nome Completo" required>
+                <input type="email" id="checkout-email" placeholder="E-mail para Confirmação" required>
+                <input type="text" id="checkout-cep" placeholder="CEP/Código Postal" required>
+                <input type="text" id="checkout-endereco" placeholder="Endereço (Rua, Número)" required>
+                
+                <div class="carrinho-total" style="text-align: left; border-top: 1px solid var(--cor-borda); padding-top: 15px;">
+                    <p style="font-size: 1.2em;">Total a Pagar: <span id="checkout-total-exibido" style="color: var(--cor-acento-rosa); font-weight: 700;">R$ 0,00</span></p>
+                </div>
+
+                <div class="carrinho-acoes" style="justify-content: center;">
+                    <button type="submit" class="btn-destaque" style="width: 100%;">Confirmar e Pagar (Simulação)</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-confirmacao" class="modal">
+        <div class="modal-conteudo" style="text-align: center;">
+            <span class="fechar-btn" id="fechar-confirmacao">&times;</span>
+            <h2 style="color: green;">✅ Pedido Confirmado!</h2>
+            <p class="subtitulo">Sua experiência gourmet está a caminho. Acompanhe os detalhes:</p>
+            
+            <div id="confirmacao-detalhes" style="text-align: left; padding: 20px; border: 1px solid var(--cor-borda); background-color: var(--cor-neutra-fundo); border-radius: 5px;">
+                </div>
+            
+            <div class="carrinho-acoes" style="justify-content: center; margin-top: 30px;">
+                <button class="btn-destaque" onclick="location.href='index.html';">Voltar à Home</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="interatividade.js"></script>
+
 </body>
 </html>

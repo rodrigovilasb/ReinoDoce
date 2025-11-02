@@ -1,76 +1,271 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Reino Doce</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="icon" href="img/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reino Doce | Confeitaria Gourmet e Logística Internacional</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div id="tela-carregamento">
-    <div class="conteudo-carregamento">
-        <h1 class="logo-carregamento">Reino Doce</h1>
-        <div class="carregando"></div>
-    </div>
-</div>
-
-<header class="barra-topo" id="cabecalho-principal">
-    <div class="logo">Reino Doce</div>
-    <div style="display: flex; align-items: center; gap: 20px;">
-        <button class="botao-carrinho" onclick="alternarDropdownCarrinho()" aria-label="Abrir carrinho">
-            <i class="fa-solid fa-shopping-cart"></i>
-            <span id="contador-carrinho">0</span>
-        </button>
-        <button class="botao-menu" onclick="alternarMenu()">
-            <i class="fa-solid fa-bars fa-2x"></i>
-        </button>
-    </div>
-</header>
-
-<nav class="menu-lateral" id="menuLateral">
-    <a href="javascript:void(0)" class="botao-fechar" onclick="alternarMenu()">×</a>
-    <a href="inicio.html">Início</a>
-    <a href="sobre.html">Sobre nós</a>
-    <a href="missao-visao-valores.html">Missão, Visão e Valores</a>
-    <a href="produtos.html">Produtos</a>
-    <a href="perto-de-voce.html">Perto de você</a>
-    <a href="parcerias.html">Parcerias</a>
-    <a href="trabalhe-conosco.html">Trabalhe conosco</a>
-    <a href="contato.html">Contato</a>
-    <a href="compra-internacional.html">Compra internacional</a>
-    <a href="carrinho.html">Carrinho</a>
-</nav>
-
-<main class="conteudo" id="conteudo-principal">
-    
-    <section id="inicio" class="secao-inicial">
-        <div class="conteudo-inicial">
-            
-            <h1>Bem-vindo ao Reino Doce!</h1>
-            <p>Onde a doçura se transforma em momentos inesquecíveis. Descubra o sabor da felicidade.</p>
-            <a href="produtos.html" class="btn-hero">Conheça Nossos Produtos</a>
-
+    <header>
+        <div class="logo">
+            <h1>Reino Doce.</h1>
         </div>
-    
+        <nav>
+            <a href="sobre.html">Nossa História</a>
+            <a href="produtos.html">Coleção Gourmet</a> 
+            <a href="#internacional">Logística Global</a>
+            <a href="#garantia">Nossa Garantia</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <button class="carrinho-btn" id="abrir-carrinho" title="Ver Carrinho">
+            <span class="icone">🛍️</span> Carrinho (<span id="contador-carrinho">0</span>)
+        </button>
+    </header>
+
+    <section class="banner-principal home-banner">
+        <h2>A Alta Confeitaria, Sem Fronteiras.</h2>
+        <p class="subtitulo">Ingredientes nobres, embalagens luxuosas e logística refrigerada global.</p>
+        <a href="produtos.html" class="btn-destaque">Ver Coleção Gourmet</a>
     </section>
 
-</main>
+    <section class="secao-info" id="missao">
+        <h2>A História Por Trás do Sabor</h2>
+        <p class="missao-texto">O Reino Doce nasceu de uma paixão por transformar momentos em memórias. Nossa missão é levar a arte da confeitaria brasileira, utilizando os melhores ingredientes globais, com a máxima qualidade e sofisticação.</p>
+        <div class="missao-destaque">
+            <span>🍫 Cacau Belga 70%</span>
+            <span>🍓 Frutas Frescas</span>
+            <span>✈️ Logística Refrigerada</span>
+        </div>
+    </section>
 
-<footer class="rodape">
-    <div class="conteudo-rodape">
-        <p>&copy; 2025 ReinoDoce. Todos os direitos reservados.</p>
+    <section class="secao-depoimentos">
+        <h3>O que nossos clientes dizem</h3>
+        <p class="subtitulo" style="color: rgba(255, 255, 255, 0.8);">Excelência reconhecida por paladares exigentes ao redor do mundo.</p>
+        <div class="depoimentos-grid">
+            <div class="depoimento-card">
+                <p>"A entrega chegou perfeitamente em Paris, como se tivesse saído da cozinha agora. O Macaron de Rosas é divino!"</p>
+                <p class="cliente">— Sophie L., França</p>
+            </div>
+            <div class="depoimento-card">
+                <p>"O Brownie Trilogia é o melhor que já provei. O cuidado com a embalagem e o frescor são impressionantes."</p>
+                <p class="cliente">— Ricardo M., Brasil</p>
+            </div>
+            <div class="depoimento-card">
+                <p>"Servi o Tiramisú de Pistache em um evento. A sofisticação e o sabor foram o destaque da noite."</p>
+                <p class="cliente">— John H., EUA</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="garantia" id="garantia">
+        <h2>Nossa Promessa de Frescor</h2>
+        <p class="subtitulo">A qualidade é inegociável, desde a produção até a sua mesa.</p>
+
+        <div class="garantia-detalhes">
+            <div class="detalhe-card">
+                <h4>Embalagem Refrigerada Ativa</h4>
+                <p>Utilizamos embalagens isotérmicas de última geração com gel refrigerante para manter a temperatura ideal durante todo o transporte, garantindo o frescor e a textura.</p>
+            </div>
+            <div class="detalhe-card">
+                <h4>Rastreamento e Entrega Expressa</h4>
+                <p>Parceria com as melhores transportadoras. Você acompanha cada passo da sua encomenda e recebe seus doces em tempo recorde, preservando o sabor.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="internacional secao-info" id="internacional">
+        <h2>Logística Global de Sabor</h2>
+        <p class="subtitulo">Exportamos a excelência da nossa confeitaria para diversos países.</p>
+        
+        <h3>Países do Mercosul (Cotação Direta)</h3>
+        <div class="mercosul-acordeao" id="mercosul-lista">
+            <div class="mercosul-item">
+                <button class="pais-btn">Argentina</button>
+                <div class="mercosul-form-container">
+                    <form onsubmit="enviarCotacaoMercosul(event, 'Argentina')">
+                        <input type="email" placeholder="Seu E-mail Profissional" required>
+                        <select name="produto-interesse" required>
+                            <option value="">Selecione o Produto de Interesse</option>
+                            <option value="Macarons">Macarons Especiais</option>
+                            <option value="Chocolates">Chocolates Gourmet</option>
+                            <option value="Doces-Finoss">Doces Finos Variados</option>
+                        </select>
+                        <input type="number" placeholder="Quantidade Estimada (unidades)" min="10" required>
+                        <div style="margin: 10px 0;">
+                            <label><input type="radio" name="pagamento" value="Transferencia" required> Transferência Internacional</label>
+                            <label><input type="radio" name="pagamento" value="Cartao"> Cartão Corporativo</label>
+                        </div>
+                        <button type="submit" class="btn-destaque">Solicitar Cotação</button>
+                        <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
+                    </form>
+                </div>
+            </div>
+            <div class="mercosul-item">
+                <button class="pais-btn">Uruguai</button>
+                <div class="mercosul-form-container">
+                    <form onsubmit="enviarCotacaoMercosul(event, 'Uruguai')">
+                        <input type="email" placeholder="Seu E-mail Profissional" required>
+                        <select name="produto-interesse" required>
+                             <option value="">Selecione o Produto de Interesse</option>
+                            <option value="Macarons">Macarons Especiais</option>
+                            <option value="Chocolates">Chocolates Gourmet</option>
+                            <option value="Doces-Finoss">Doces Finos Variados</option>
+                        </select>
+                        <input type="number" placeholder="Quantidade Estimada (unidades)" min="10" required>
+                         <div style="margin: 10px 0;">
+                            <label><input type="radio" name="pagamento" value="Transferencia" required> Transferência Internacional</label>
+                            <label><input type="radio" name="pagamento" value="Cartao"> Cartão Corporativo</label>
+                        </div>
+                        <button type="submit" class="btn-destaque">Solicitar Cotação</button>
+                        <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 40px; font-weight: 600;">Seu país não está na lista?</p>
+        <button id="abrir-outros-paises" class="btn-destaque">Cotação para Outros Países</button>
+    </section>
+
+
+    <section class="secao-info" id="formas-pagamento">
+        <h2>Formas de Pagamento</h2>
+        <p class="subtitulo">Aceitamos as seguintes opções para sua comodidade, garantindo transações seguras e rápidas:</p>
+        <div class="opcoes-pagamento">
+            <span>Visa</span>
+            <span>Mastercard</span>
+            <span>Pix</span>
+            <span>Boleto Bancário</span>
+            <span>American Express</span>
+            <span>Transferência Internacional</span>
+        </div>
+    </section>
+
+
+    <section class="secao-info" id="contato">
+        <h2>Fale Conosco</h2>
+        <p class="subtitulo">Entre em contato para pedidos personalizados, eventos ou dúvidas sobre logística.</p>
+        
+        <form class="formulario-contato" onsubmit="enviarContato(event)">
+            <input type="text" id="nome" placeholder="Seu Nome Completo" required>
+            <input type="email" id="email" placeholder="Seu Melhor E-mail" required>
+            <textarea id="mensagem" placeholder="Sua Mensagem/Detalhes do Pedido" rows="5" required></textarea>
+            
+            <p class="destaque-contato">Retornaremos em até 24 horas.</p>
+            <button type="submit" class="btn-destaque" style="width: 100%;">Enviar Solicitação</button>
+            <p id="msg-sucesso" style="display: none; text-align: center; margin-top: 15px; font-weight: 600;">Sua mensagem foi enviada!</p>
+        </form>
+    </section>
+
+    <footer>
+        <div class="rodape-conteudo">
+            <div class="rodape-coluna">
+                <h4>Reino Doce</h4>
+                <p>Confeitaria de Alta Gama</p>
+                <p>Rua Gourmet, 123 - São Paulo, SP, Brasil</p>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Institucional</h4>
+                <a href="sobre.html">Nossa História</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Ajuda e Suporte</h4>
+                <a href="#">Rastrear Pedido</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">FAQ - Perguntas Frequentes</a>
+            </div>
+        </div>
+        <p class="copy">&copy; 2025 Reino Doce. Logística Global de Sabor. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modal-carrinho" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-carrinho">&times;</span>
+            <h2>🛍️ Seu Carrinho de Compras</h2>
+            
+            <div id="itens-carrinho-lista">
+                <p style="text-align: center; color: var(--cor-texto-secundario);" id="mensagem-vazio">Seu carrinho está vazio.</p>
+            </div>
+            
+            <hr>
+            
+            <div class="carrinho-total">
+                <p>Subtotal: <span id="carrinho-subtotal">R$ 0,00</span></p>
+                <p>Envio (Estimado): R$ 0,00</p>
+                <h3>Total Geral: <span id="carrinho-total-geral">R$ 0,00</span></h3>
+            </div>
+
+            <div class="carrinho-acoes">
+                <button class="btn-destaque" id="finalizar-compra-btn">Finalizar Compra</button>
+                <button class="btn-limpar" id="limpar-carrinho">Limpar Carrinho</button>
+            </div>
+        </div>
     </div>
-</footer>
+    
+    <div id="modal-checkout" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-checkout">&times;</span>
+            <h2>📦 Checkout Rápido</h2>
+            <p class="subtitulo">Preencha seus dados para prosseguir com a embalagem refrigerada.</p>
+            
+            <form id="formulario-checkout" onsubmit="processarCheckout(event)">
+                <input type="text" id="checkout-nome" placeholder="Nome Completo" required>
+                <input type="email" id="checkout-email" placeholder="E-mail para Confirmação" required>
+                <input type="text" id="checkout-cep" placeholder="CEP/Código Postal" required>
+                <input type="text" id="checkout-endereco" placeholder="Endereço (Rua, Número)" required>
+                
+                <div class="carrinho-total" style="text-align: left; border-top: 1px solid var(--cor-borda); padding-top: 15px;">
+                    <p style="font-size: 1.2em;">Total a Pagar: <span id="checkout-total-exibido" style="color: var(--cor-acento-rosa); font-weight: 700;">R$ 0,00</span></p>
+                </div>
 
-<div id="carrinho-dropdown" class="carrinho-fixo">
-    <h3>Seu Carrinho</h3>
-    <ul id="lista-carrinho"></ul>
-    <p id="msg-carrinho-vazio">Seu carrinho está vazio.</p>
-    <button onclick="alternarDropdownCarrinho()">Fechar</button>
-</div>
-<script src="script.js"></script>
+                <div class="carrinho-acoes" style="justify-content: center;">
+                    <button type="submit" class="btn-destaque" style="width: 100%;">Confirmar e Pagar (Simulação)</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-confirmacao" class="modal">
+        <div class="modal-conteudo" style="text-align: center;">
+            <span class="fechar-btn" id="fechar-confirmacao">&times;</span>
+            <h2 style="color: green;">✅ Pedido Confirmado!</h2>
+            <p class="subtitulo">Sua experiência gourmet está a caminho. Acompanhe os detalhes:</p>
+            
+            <div id="confirmacao-detalhes" style="text-align: left; padding: 20px; border: 1px solid var(--cor-borda); background-color: var(--cor-neutra-fundo); border-radius: 5px;">
+                </div>
+            
+            <div class="carrinho-acoes" style="justify-content: center; margin-top: 30px;">
+                <button class="btn-destaque" onclick="location.href='index.html';">Voltar à Home</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="modal-outros-paises" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-outros-paises">&times;</span>
+            <h2>✈️ Cotação Global</h2>
+            <p class="subtitulo">Selecione seu destino ou insira o nome do país para iniciarmos o processo de cotação de exportação.</p>
+            
+            <ul id="lista-paises-selecao" style="list-style: none; padding: 0; text-align: center;">
+                <li style="padding: 10px; border-bottom: 1px solid #eee; cursor: pointer;">Estados Unidos</li>
+                <li style="padding: 10px; border-bottom: 1px solid #eee; cursor: pointer;">Portugal</li>
+                <li style="padding: 10px; border-bottom: 1px solid #eee; cursor: pointer;">Japão</li>
+                <li class="outro-input-container" style="padding: 10px 0;">
+                    <input type="text" id="outro-pais-input" placeholder="Outro país, digite aqui..." style="padding: 10px; width: 80%; border: 1px solid var(--cor-borda); border-radius: 5px;">
+                    <button id="confirmar-pais-selecionado" class="btn-destaque" style="margin-top: 10px; width: 80%;">Confirmar País</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="interatividade.js"></script>
+
 </body>
 </html>

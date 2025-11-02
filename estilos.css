@@ -1,0 +1,659 @@
+/* Paleta Profissional (Melhorada): Rosa e Marrom como Acentos */
+:root {
+    --cor-acento-rosa: #FF69B4;    /* Rosa Choque/Médio - Destaque */
+    --cor-acento-marrom: #5A352A;  /* Marrom Escuro Sóbrio (Chocolate) */
+    --cor-neutra-fundo: #F8F4F0;   /* Creme Suave - Fundo Geral (Menos branco) */
+    --cor-neutra-clara: #FFFFFF;   /* Branco Puro - Cartões/Headers */
+    --cor-texto-principal: #222222; 
+    --cor-texto-secundario: #666666; 
+    --cor-borda: #E0E0E0;          
+}
+
+/* Tipografia e Estilos Gerais */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-neutra-fundo);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--cor-texto-principal);
+    margin-top: 0;
+}
+
+h2 { font-size: 2.8em; margin-bottom: 20px; }
+h3 { font-size: 2em; margin-bottom: 15px; color: var(--cor-acento-marrom); }
+
+.subtitulo {
+    font-size: 1.1em;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 40px;
+}
+
+/* Botão de Destaque */
+.btn-destaque {
+    display: inline-block;
+    background-color: var(--cor-acento-rosa);
+    color: var(--cor-neutra-clara);
+    text-decoration: none;
+    padding: 14px 40px;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-destaque:hover {
+    background-color: var(--cor-acento-marrom);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 1. Cabeçalho */
+header {
+    background-color: var(--cor-neutra-clara);
+    padding: 15px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo h1 {
+    font-size: 1.8em;
+    color: var(--cor-acento-marrom);
+}
+nav a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+nav a:hover { color: var(--cor-acento-rosa); }
+.carrinho-btn {
+    background-color: var(--cor-acento-marrom);
+    padding: 10px 18px;
+    border-radius: 5px;
+    color: var(--cor-neutra-clara);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+.carrinho-btn .icone {
+    margin-right: 5px;
+}
+
+/* 2. Banner Principal (Com Imagem de Fundo) */
+.banner-principal {
+    text-align: center;
+    padding: 120px 50px;
+    background-size: cover;
+    background-position: center;
+    color: var(--cor-neutra-clara);
+    position: relative;
+}
+/* Overlay escuro para melhorar a leitura do texto */
+.banner-principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); 
+    z-index: 1;
+}
+
+.banner-principal * {
+    position: relative;
+    z-index: 2;
+    color: var(--cor-neutra-clara);
+}
+
+.home-banner {
+    /* Simulação de imagem gourmet sofisticada */
+    background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Gourmet+Chocolate+e+Frutas'); 
+}
+.produtos-banner {
+    /* Simulação de imagem mais clara para a página de produtos */
+    background-image: url('https://via.placeholder.com/1500x300/F5DEB3/5A352A?text=Galeria+de+Doces+Finos+e+Flores');
+    padding: 80px 50px;
+}
+.produtos-banner::before {
+    background: rgba(0, 0, 0, 0.2); 
+}
+.banner-principal h2 {
+    color: var(--cor-neutra-clara);
+}
+.banner-principal .subtitulo {
+    color: #FFECF4; /* Tom de rosa claro para o texto secundário */
+}
+
+
+/* 3. Seção Informações (Missão e Contato) */
+.secao-info {
+    padding: 80px 100px;
+    text-align: center;
+    background-color: var(--cor-neutra-fundo);
+}
+.missao-texto {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    font-size: 1em;
+    color: var(--cor-texto-secundario);
+}
+.missao-destaque span {
+    display: inline-block;
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-texto-principal);
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--cor-acento-rosa);
+}
+
+/* 4. Novo: Depoimentos */
+.secao-depoimentos {
+    background-color: var(--cor-acento-marrom); /* Fundo com cor escura */
+    color: var(--cor-neutra-fundo);
+    padding: 80px 100px;
+    text-align: center;
+    border-top: 1px solid var(--cor-borda);
+    border-bottom: 1px solid var(--cor-borda);
+}
+.secao-depoimentos h3 {
+    color: var(--cor-neutra-clara);
+}
+.depoimentos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.depoimento-card {
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-texto-principal);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 350px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+.depoimento-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.depoimento-card .cliente {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--cor-acento-rosa);
+    text-align: right;
+    margin: 0;
+}
+
+
+/* 5. Produtos (Página produtos.html) */
+.main-produtos {
+    padding: 60px 80px;
+    background-color: var(--cor-neutra-clara);
+}
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+.produto-card {
+    background-color: var(--cor-neutra-fundo);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.produto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: none;
+}
+.produto-card h3 {
+    font-size: 1.5em;
+    color: var(--cor-acento-rosa);
+}
+.preco-produto strong {
+    font-size: 1.4em;
+    color: var(--cor-acento-marrom);
+    display: block;
+    margin: 10px 0;
+}
+.produto-card .btn-comprar {
+    display: block;
+    width: 90%;
+    margin: 20px auto 0;
+    background-color: var(--cor-acento-rosa);
+    padding: 12px 20px;
+    text-transform: none;
+}
+
+
+/* 6. Seção de Garantia */
+.garantia {
+    padding: 70px 80px;
+    text-align: center;
+    background-color: var(--cor-neutra-clara);
+    border-top: 1px solid var(--cor-borda);
+}
+
+.garantia-detalhes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.detalhe-card {
+    max-width: 400px;
+    padding: 30px;
+    border-left: 5px solid var(--cor-acento-rosa);
+    text-align: left;
+    background-color: var(--cor-neutra-fundo);
+    border-radius: 5px;
+}
+
+.detalhe-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-acento-marrom);
+    margin-top: 0;
+    font-size: 1.3em;
+}
+
+/* 7. Internacional */
+.internacional {
+    background-color: var(--cor-neutra-fundo);
+    padding: 70px 80px;
+    text-align: center;
+    border-top: 5px solid var(--cor-acento-rosa);
+}
+.label-pais {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+}
+.internacional select {
+    padding: 12px;
+    border: 1px solid var(--cor-acento-marrom);
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 1em;
+    background-color: var(--cor-neutra-clara);
+}
+.feedback-caixa {
+    /* Estilos de feedback no JS */
+}
+
+/* 8. Contato */
+.destaque-contato {
+    color: var(--cor-acento-marrom);
+    font-weight: 700;
+    display: block;
+    font-size: 1.1em;
+}
+.formulario-contato {
+    max-width: 550px;
+    padding: 30px;
+    background-color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-borda);
+    margin: 30px auto 0; /* Centraliza o formulário */
+}
+.formulario-contato input[type="text"],
+.formulario-contato input[type="email"],
+.formulario-contato textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+/* 9. Rodapé Detalhado */
+footer {
+    background-color: var(--cor-acento-marrom);
+    color: var(--cor-neutra-clara);
+    padding: 40px 80px 20px 80px;
+    font-size: 0.9em;
+}
+
+.rodape-conteudo {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.rodape-coluna {
+    flex-basis: 30%;
+}
+
+.rodape-coluna h4 {
+    color: var(--cor-neutra-clara);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.rodape-coluna a {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.rodape-coluna a:hover {
+    color: var(--cor-acento-rosa);
+}
+
+.copy {
+    text-align: center;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 10. Formas de Pagamento */
+.opcoes-pagamento {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.opcoes-pagamento span {
+    background-color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-acento-rosa);
+    color: var(--cor-acento-marrom);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+    cursor: default;
+}
+
+.opcoes-pagamento span:hover {
+    background-color: #FFF0F5; /* Rosa bem suave */
+}
+
+
+/* --- ESTILOS DO MODAL (CARRINHO, CHECKOUT, CONFIRMAÇÃO) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); 
+    animation: fadeIn 0.3s;
+}
+
+.modal-conteudo {
+    background-color: var(--cor-neutra-clara);
+    margin: 5% auto; 
+    padding: 30px;
+    border: 1px solid var(--cor-acento-marrom);
+    width: 90%; 
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes fadeIn { from {opacity: 0} to {opacity: 1} }
+@keyframes slideIn { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+.fechar-btn {
+    color: var(--cor-texto-principal);
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 20px;
+    transition: color 0.3s;
+}
+
+.fechar-btn:hover,
+.fechar-btn:focus {
+    color: var(--cor-acento-rosa);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#itens-carrinho-lista {
+    margin-top: 20px;
+    max-height: 300px; 
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.item-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--cor-borda);
+    font-size: 1em;
+}
+
+.item-carrinho span:first-child {
+    font-weight: 600;
+}
+
+.item-carrinho .remover-btn {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-left: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.item-carrinho .remover-btn:hover {
+    opacity: 1;
+}
+
+.carrinho-total {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.carrinho-total h3 {
+    color: var(--cor-acento-marrom);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    margin-top: 10px;
+}
+
+.carrinho-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-limpar {
+    background-color: var(--cor-neutra-fundo);
+    color: var(--cor-texto-secundario);
+    border: 1px solid var(--cor-borda);
+    padding: 14px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.btn-limpar:hover {
+    background-color: #F0F0F0;
+    color: var(--cor-texto-principal);
+}
+
+/* Estilos específicos para o Checkout */
+#formulario-checkout input[type="text"],
+#formulario-checkout input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+
+/* --- ESTILOS ESPECÍFICOS PARA SOBRE.HTML --- */
+
+/* 1. Banner da Página Sobre */
+.sobre-banner {
+    /* Usar um fundo que remete à elegância e história */
+    background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Vintage+Detalhes+Embalagens');
+    padding: 100px 50px;
+}
+.sobre-banner::before {
+    background: rgba(90, 53, 42, 0.4); /* Marrom semi-transparente do tema */
+}
+
+/* 2. Seção de História/Narrativa */
+.secao-narrativa {
+    padding: 80px 100px;
+    text-align: left;
+    background-color: var(--cor-neutra-clara);
+}
+
+.historia-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.historia-coluna {
+    flex: 1;
+}
+
+.historia-coluna img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    margin-top: 15px;
+}
+
+.destaque-marrom {
+    color: var(--cor-acento-marrom);
+    font-weight: 700;
+}
+
+/* 3. Seção de Valores/Pilares */
+.secao-pilares {
+    padding: 60px 100px;
+    background-color: var(--cor-neutra-fundo);
+    text-align: center;
+}
+
+.pilares-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.pilar-card {
+    max-width: 300px;
+    padding: 25px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    background-color: var(--cor-neutra-clara);
+    transition: box-shadow 0.3s;
+}
+
+.pilar-card:hover {
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15); /* Sombra suave rosa */
+    border-color: var(--cor-acento-rosa);
+}
+
+.pilar-card h4 {
+    color: var(--cor-acento-rosa);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header, .secao-info, .internacional, .garantia, .secao-depoimentos {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .main-produtos { padding: 40px 20px; }
+    
+    nav { flex-wrap: wrap; justify-content: center; }
+    nav a { margin: 5px 10px; }
+    
+    .depoimentos-grid { flex-direction: column; gap: 20px; align-items: center; }
+    .depoimento-card { max-width: 90%; }
+    .detalhe-card { max-width: 100%; }
+    .garantia-detalhes { flex-direction: column; gap: 20px; }
+    .rodape-conteudo { flex-direction: column; }
+    .rodape-coluna { margin-bottom: 25px; text-align: center; }
+    .rodape-coluna a { display: inline-block; margin: 0 10px; }
+    .modal-conteudo { margin: 20% auto; }
+    .carrinho-acoes { justify-content: center; }
+    
+    /* Responsividade para a seção Sobre */
+    .secao-narrativa, .secao-pilares {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .historia-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .pilares-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+}

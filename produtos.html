@@ -1,118 +1,224 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Produtos - Reino Doce</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="icon" href="img/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coleção Gourmet | Reino Doce</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="barra-topo" id="cabecalho-principal">
-	    <div class="logo">Reino Doce</div>
-	    <div style="display: flex; align-items: center; gap: 20px;">
-	        <button class="botao-carrinho" onclick="alternarDropdownCarrinho()" aria-label="Abrir carrinho">
-	            <i class="fa-solid fa-shopping-cart"></i>
-	            <span id="contador-carrinho">0</span>
-	        </button>
-	        <button class="botao-menu" onclick="alternarMenu()">
-	            <i class="fa-solid fa-bars fa-2x"></i>
-	        </button>
-	    </div>
-	</header>
 
-	<nav class="menu-lateral" id="menuLateral">
-	    <a href="javascript:void(0)" class="botao-fechar" onclick="alternarMenu()">×</a>
-	    <a href="inicio.html">Início</a>
-	    <a href="sobre.html">Sobre nós</a>
-	    <a href="missao-visao-valores.html">Missão, Visão e Valores</a>
-	    <a href="produtos.html">Produtos</a>
-	    <a href="perto-de-voce.html">Perto de você</a>
-	    <a href="parcerias.html">Parcerias</a>
-	    <a href="trabalhe-conosco.html">Trabalhe conosco</a>
-	    <a href="contato.html">Contato</a>
-	    <a href="compra-internacional.html">Compra internacional</a>
-	    <a href="carrinho.html">Carrinho</a>
-	</nav>
+    <header>
+        <div class="logo">
+            <h1>Reino Doce.</h1>
+        </div>
+        <nav>
+            <a href="sobre.html">Nossa História</a>
+            <a href="produtos.html">Coleção Gourmet</a> 
+            <a href="index.html#internacional">Logística Global</a>
+            <a href="index.html#garantia">Nossa Garantia</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+        <button class="carrinho-btn" id="abrir-carrinho" title="Ver Carrinho">
+            <span class="icone">🛍️</span> Carrinho (<span id="contador-carrinho">0</span>)
+        </button>
+    </header>
 
-	<main class="conteudo">
-	    <section id="products" class="secao">
-	        <h2 class="titulo-secao">Nossos Produtos</h2>
-	        <p>Descubra a variedade que a Reino Doce oferece. Cada produto é uma obra-prima de sabor.</p>
-	        <div class="grade-produtos">
-	            <!-- ...existing product cards... -->
-	            <div class="cartao-produto">
-	                <img src="img/morango.png" alt="Doce de Morango">
-	                <h3>Morango Reinado</h3>
-	                <p>Um doce de morango cremoso e com um sabor inconfundível que lembra a infância.</p>
-	                <button class="adicionar-carrinho" data-produto="Moranguinho Feliz">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/chocolate.png" alt="Chocolate Crocante">
-	                <h3>Chocolate Supremo</h3>
-	                <p>A combinação perfeita de chocolate amargo e flocos crocantes para uma experiência inesquecível.</p>
-	                <button class="adicionar-carrinho" data-produto="Chocolate Supremo">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/caramelo.png" alt="Bala de Caramelo">
-	                <h3>Bala Reino</h3>
-	                <p>Nossa bala de caramelo tradicional, macia por dentro e com um sabor que derrete na boca.</p>
-	                <button class="adicionar-carrinho" data-produto="Bala Reino">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/jujuba.png" alt="Jujuba Sortida">
-	                <h3>Jujubas Coloridas</h3>
-	                <p>Uma explosão de cores e sabores frutados em uma única embalagem. Ideal para a diversão!</p>
-	                <button class="adicionar-carrinho" data-produto="Jujubas Coloridas">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/suspiro.png" alt="Suspiro Doce">
-	                <h3>Suspiro de Nuvens</h3>
-	                <p>Leves, crocantes e com a doçura do açúcar. Nossos suspiros são a alegria das festas.</p>
-	                <button class="adicionar-carrinho" data-produto="Suspiro de Nuvens">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/abobora.png" alt="Doce de Abóbora">
-	                <h3>Doce de Abóbora da Vovó</h3>
-	                <p>Um clássico que combina o sabor caseiro com nossa produção em escala industrial.</p>
-	                <button class="adicionar-carrinho" data-produto="Doce de Abóbora da Vovó">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/goiabada.png" alt="Goiabada">
-	                <h3>Goiabada Delícia</h3>
-	                <p>Feita com goiabas selecionadas, nossa goiabada é perfeita para qualquer ocasião.</p>
-	                <button class="adicionar-carrinho" data-produto="Goiabada Delícia">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/amendoim.png" alt="Crocante de Amendoim">
-	                <h3>Crocante de Amendoim Real</h3>
-	                <p>A crocância irresistível do amendoim em uma barra de doce que você não vai conseguir parar de comer.</p>
-	                <button class="adicionar-carrinho" data-produto="Crocante de Amendoim Real">Adicionar ao Carrinho</button>
-	            </div>
-	            <div class="cartao-produto">
-	                <img src="img/brigadeiro.png" alt="Brigadeiro Gourmet">
-	                <h3>Brigadeiro Gourmet</h3>
-	                <p>Nosso brigadeiro é feito com chocolate de alta qualidade e um toque especial que o torna único.</p>
-	                <button class="adicionar-carrinho" data-produto="Brigadeiro Gourmet">Adicionar ao Carrinho</button>
-	            </div>
-	        </div>
-	    </section>
-	</main>
+    <section class="banner-principal produtos-banner">
+        <h2>Coleção Gourmet | Sabores Únicos</h2>
+        <p class="subtitulo">Do Brasil para o mundo. O luxo de ingredientes finos, agora em sua casa.</p>
+    </section>
 
-	<footer class="rodape">
-	    <div class="conteudo-rodape">
-	        <p>&copy; 2025 ReinoDoce. Todos os direitos reservados.</p>
-	    </div>
-	</footer>
+    <main class="main-produtos">
+        <div class="produtos-grid" id="produtos">
+            
+            <div class="produto-card">
+                <img src="Brigadeiro reino doce.png" alt="Brigadeiro Belga Noir">
+                <h3>Brigadeiro Belga Noir</h3>
+                <p>Intenso cacau 70%. Perfeito equilíbrio amargo-doce.</p>
+                <p class="preco-produto"><strong>R$ 8,50</strong></p>
+                <button class="btn-comprar" data-nome="Brigadeiro Belga Noir" data-preco="8.50">Adicionar</button>
+            </div>
 
-	<div id="carrinho-dropdown" class="carrinho-fixo">
-	    <h3>Seu Carrinho</h3>
-	    <ul id="lista-carrinho"></ul>
-	    <p id="msg-carrinho-vazio">Seu carrinho está vazio.</p>
-	    <button onclick="alternarDropdownCarrinho()">Fechar</button>
-	</div>
+            <div class="produto-card">
+                <img src="rosa floral reino doce (1).png" alt="Macaron de Rosas e Champagne">
+                <h3>Macaron Rosas & Champagne</h3>
+                <p>Elegância francesa, recheio com toque floral.</p>
+                <p class="preco-produto"><strong>R$ 15,00</strong></p>
+                <button class="btn-comprar" data-nome="Macaron Rosas & Champagne" data-preco="15.00">Adicionar</button>
+            </div>
 
-	<script src="script.js"></script>
+            <div class="produto-card">
+                <img src="Brownie  reino doce.png" alt="Brownie Trilogia">
+                <h3>Brownie Trilogia</h3>
+                <p>Camadas de chocolate ao leite, meio amargo e branco.</p>
+                <p class="preco-produto"><strong>R$ 18,00</strong></p>
+                <button class="btn-comprar" data-nome="Brownie Trilogia" data-preco="18.00">Adicionar</button>
+            </div>
+            
+            <div class="produto-card">
+                <img src="Pao de mel  reino doce.png" alt="Pão de Mel Gourmet">
+                <h3>Pão de Mel com Especiarias</h3>
+                <p>Massa úmida, recheio de Doce de Leite Premium e cobertura Belga.</p>
+                <p class="preco-produto"><strong>R$ 12,50</strong></p>
+                <button class="btn-comprar" data-nome="Pão de Mel Especiarias" data-preco="12.50">Adicionar</button>
+            </div>
+
+            <div class="produto-card">
+                <img src="Tartelet reino doce.png" alt="Tartelette de Pistache">
+                <h3>Tartelette de Pistache</h3>
+                <p>Massa sablée, creme de pistache artesanal e finalização com ouro comestível.</p>
+                <p class="preco-produto"><strong>R$ 25,00</strong></p>
+                <button class="btn-comprar" data-nome="Tartelette de Pistache" data-preco="25.00">Adicionar</button>
+            </div>
+
+            <div class="produto-card">
+                <img src="trufa reino doce.png" alt="Trufas de Champagne">
+                <h3>Trufa de Champagne Rosé (Caixa c/ 4)</h3>
+                <p>Ganache aerada com infusão de Champagne Rosé. Embalagem de luxo.</p>
+                <p class="preco-produto"><strong>R$ 45,00</strong></p>
+                <button class="btn-comprar" data-nome="Trufa Champagne Rosé" data-preco="45.00">Adicionar</button>
+            </div>
+            
+            <div class="produto-card">
+                <img src="cakepopreino doce.png" alt="Cake Pop de Baunilha Azure">
+                <h3>Cake Pop Baunilha & Limão Siciliano</h3>
+                <p>Bolinho no palito, cobertura azul royal e recheio refrescante.</p>
+                <p class="preco-produto"><strong>R$ 12,00</strong></p>
+                <button class="btn-comprar" data-nome="Cake Pop Baunilha & Limão" data-preco="10.00">Adicionar</button>
+            </div>
+
+            <div class="produto-card">
+                <img src="geleia doce.png" alt="Mini Cheesecake Frutas Vermelhas">
+                <h3>Mini Cheesecake Frutas Vermelhas</h3>
+                <p>Base crocante, cream cheese premium e geleia artesanal de morango e amora.</p>
+                <p class="preco-produto"><strong>R$ 22,00</strong></p>
+                <button class="btn-comprar" data-nome="Mini Cheesecake Frutas" data-preco="22.00">Adicionar</button>
+            </div>
+            
+            <div class="produto-card">
+                <img src="palha Reinodoce.png" alt="Palha Italiana Amêndoa">
+                <h3>Palha Italiana de Amêndoa e Flor de Sal</h3>
+                <p>Biscoito Maizena, chocolate nobre e amêndoas torradas, com toque salgado.</p>
+                <p class="preco-produto"><strong>R$ 9,50</strong></p>
+                <button class="btn-comprar" data-nome="Palha Italiana Amêndoa" data-preco="9.50">Adicionar</button>
+            </div>
+            
+            <div class="produto-card">
+                <img src="alfajor Reinodoce.png" alt="Alfajor de Doce de Leite">
+                <h3>Alfajor Supremo de Dulce de Leche</h3>
+                <p>Biscoito macio, recheio generoso de doce de leite argentino e banho de chocolate branco.</p>
+                <p class="preco-produto"><strong>R$ 16,00</strong></p>
+                <button class="btn-comprar" data-nome="Alfajor Supremo" data-preco="16.00">Adicionar</button>
+            </div>
+            
+            <div class="produto-card">
+                <img src="lavanda Reinodoce.png" alt="Trufa de Lavanda e Mel Silvestre">
+                <h3>Trufa de Lavanda & Mel Silvestre</h3>
+                <p>Ganache de chocolate branco e infusão de lavanda fresca com mel puro.</p>
+                <p class="preco-produto"><strong>R$ 19,00</strong></p>
+                <button class="btn-comprar" data-nome="Trufa Lavanda & Mel" data-preco="19.00">Adicionar</button>
+            </div>
+
+            <div class="produto-card">
+                <img src="damasvo Reinodoce.png" alt="Torta de Damasco e Especiarias">
+                <h3>Torta de Damasco e Especiarias</h3>
+                <p>Base crocante, recheio cremoso de damasco e toque de cardamomo e noz-moscada.</p>
+                <p class="preco-produto"><strong>R$ 42,00</strong></p>
+                <button class="btn-comprar" data-nome="Torta Damasco & Especiarias" data-preco="28.00">Adicionar</button>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="rodape-conteudo">
+            <div class="rodape-coluna">
+                <h4>Reino Doce</h4>
+                <p>Confeitaria de Alta Gama</p>
+                <p>Rua Gourmet, 123 - São Paulo, SP, Brasil</p>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Institucional</h4>
+                <a href="#">Trabalhe Conosco</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="rodape-coluna">
+                <h4>Ajuda e Suporte</h4>
+                <a href="#">Rastrear Pedido</a>
+                <a href="#">Trocas e Devoluções</a>
+                <a href="#">FAQ - Perguntas Frequentes</a>
+            </div>
+        </div>
+        <p class="copy">&copy; 2025 Reino Doce. Logística Global de Sabor. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="modal-carrinho" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-carrinho">&times;</span>
+            <h2>🛍️ Seu Carrinho de Compras</h2>
+            
+            <div id="itens-carrinho-lista">
+                <p style="text-align: center; color: var(--cor-texto-secundario);" id="mensagem-vazio">Seu carrinho está vazio.</p>
+            </div>
+            
+            <hr>
+            
+            <div class="carrinho-total">
+                <p>Subtotal: <span id="carrinho-subtotal">R$ 0,00</span></p>
+                <p>Envio (Estimado): R$ 0,00</p>
+                <h3>Total Geral: <span id="carrinho-total-geral">R$ 0,00</span></h3>
+            </div>
+
+            <div class="carrinho-acoes">
+                <button class="btn-destaque" id="finalizar-compra-btn">Finalizar Compra</button>
+                <button class="btn-limpar" id="limpar-carrinho">Limpar Carrinho</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modal-checkout" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-btn" id="fechar-checkout">&times;</span>
+            <h2>📦 Checkout Rápido</h2>
+            <p class="subtitulo">Preencha seus dados para prosseguir com a embalagem refrigerada.</p>
+            
+            <form id="formulario-checkout" onsubmit="processarCheckout(event)">
+                <input type="text" id="checkout-nome" placeholder="Nome Completo" required>
+                <input type="email" id="checkout-email" placeholder="E-mail para Confirmação" required>
+                <input type="text" id="checkout-cep" placeholder="CEP/Código Postal" required>
+                <input type="text" id="checkout-endereco" placeholder="Endereço (Rua, Número)" required>
+                
+                <div class="carrinho-total" style="text-align: left; border-top: 1px solid var(--cor-borda); padding-top: 15px;">
+                    <p style="font-size: 1.2em;">Total a Pagar: <span id="checkout-total-exibido" style="color: var(--cor-acento-rosa); font-weight: 700;">R$ 0,00</span></p>
+                </div>
+
+                <div class="carrinho-acoes" style="justify-content: center;">
+                    <button type="submit" class="btn-destaque" style="width: 100%;">Confirmar e Pagar (Simulação)</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="modal-confirmacao" class="modal">
+        <div class="modal-conteudo" style="text-align: center;">
+            <span class="fechar-btn" id="fechar-confirmacao">&times;</span>
+            <h2 style="color: green;">✅ Pedido Confirmado!</h2>
+            <p class="subtitulo">Sua experiência gourmet está a caminho. Acompanhe os detalhes:</p>
+            
+            <div id="confirmacao-detalhes" style="text-align: left; padding: 20px; border: 1px solid var(--cor-borda); background-color: var(--cor-neutra-fundo); border-radius: 5px;">
+                </div>
+            
+            <div class="carrinho-acoes" style="justify-content: center; margin-top: 30px;">
+                <button class="btn-destaque" onclick="location.href='index.html';">Voltar à Home</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="interatividade.js"></script>
+
 </body>
 </html>
