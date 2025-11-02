@@ -1,4 +1,4 @@
-/* Paleta Profissional (Melhorada): Rosa e Marrom como Acentos */
+
 :root {
     --cor-acento-rosa: #FF69B4;    /* Rosa Choque/Médio - Destaque */
     --cor-acento-marrom: #5A352A;  /* Marrom Escuro Sóbrio (Chocolate) */
@@ -253,6 +253,23 @@ nav a:hover { color: var(--cor-acento-rosa); }
     background-color: var(--cor-acento-rosa);
     padding: 12px 20px;
     text-transform: none;
+}
+
+.btn-comprar{
+    color: white;
+    font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: bold;
+    font-variation-settings:
+    "wdth" 200;
+    font-size: 1.1em;
+    border: none;
+    box-shadow: 0 0 8px #ff99cc;
+}
+
+h3 p {
+    text-align: justify;
 }
 
 
