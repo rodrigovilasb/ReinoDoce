@@ -1,4 +1,3 @@
-
 :root {
     --cor-acento-rosa: #FF69B4;    /* Rosa Choque/Médio - Destaque */
     --cor-acento-marrom: #5A352A;  /* Marrom Escuro Sóbrio (Chocolate) */
@@ -307,7 +306,7 @@ h3 p {
 /* 7. Internacional */
 .internacional {
     background-color: var(--cor-neutra-fundo);
-    padding: 70px 80px;
+    padding: 40px 60px;
     text-align: center;
     border-top: 5px solid var(--cor-acento-rosa);
 }
@@ -325,8 +324,110 @@ h3 p {
     font-size: 1em;
     background-color: var(--cor-neutra-clara);
 }
-.feedback-caixa {
-    /* Estilos de feedback no JS */
+
+/* Novo layout em grid para a seção internacional */
+.internacional-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 30px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.internacional-info p {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 18px;
+    max-width: 680px;
+}
+
+.mapa-placeholder {
+    background: linear-gradient(135deg, #fff0f6 0%, #fff7f9 100%);
+    border: 1px dashed var(--cor-borda);
+    color: var(--cor-acento-marrom);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(90,53,42,0.06);
+    margin-bottom: 10px;
+}
+
+/* Lista de países como acordeão acessível */
+.pais-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pais-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-borda);
+    font-weight: 700;
+    color: var(--cor-acento-marrom);
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.12s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pais-item[open] summary {
+    background-color: #FFF7FB;
+    box-shadow: 0 6px 18px rgba(255,105,180,0.08);
+    color: var(--cor-acento-rosa);
+}
+
+.pais-item summary::-webkit-details-marker { display: none; } /* remove marcador padrão */
+
+.pais-item .pais-form {
+    padding: 14px 16px 18px 16px;
+    background-color: var(--cor-neutra-fundo);
+    border: 1px solid var(--cor-borda);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Formulário dentro do acordeão */
+.pais-form input[type="email"],
+.pais-form select,
+.pais-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    box-sizing: border-box;
+    background: var(--cor-neutra-clara);
+}
+
+.opcoes-pagamento-form {
+    display: flex;
+    gap: 12px;
+    margin: 8px 0 14px 0;
+    flex-wrap: wrap;
+}
+.opcoes-pagamento-form label {
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    font-size: 0.95em;
+}
+.opcoes-pagamento-form input { margin-right: 6px; }
+
+/* Ajustes visuais do botão dentro do acordeão */
+.pais-form .btn-destaque {
+    width: 100%;
+    padding: 12px;
+}
+
+/* Nota informativa */
+.internacional .nota {
+    margin-top: 12px;
+    font-size: 0.95em;
+    color: var(--cor-texto-secundario);
 }
 
 /* 8. Contato */
@@ -673,4 +774,11 @@ footer {
         align-items: center;
         gap: 20px;
     }
+}
+
+@media (max-width: 900px) {
+    .internacional-grid { grid-template-columns: 1fr; }
+    .internacional-lista { order: 2; }
+    .internacional-info { order: 1; }
+    .mapa-placeholder { display: none; }
 }

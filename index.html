@@ -80,55 +80,69 @@
     <section class="internacional secao-info" id="internacional">
         <h2>Logística Global de Sabor</h2>
         <p class="subtitulo">Exportamos a excelência da nossa confeitaria para diversos países.</p>
-        
-        <h3>Países do Mercosul (Cotação Direta)</h3>
-        <div class="mercosul-acordeao" id="mercosul-lista">
-            <div class="mercosul-item">
-                <button class="pais-btn">Argentina</button>
-                <div class="mercosul-form-container">
-                    <form onsubmit="enviarCotacaoMercosul(event, 'Argentina')">
-                        <input type="email" placeholder="Seu E-mail Profissional" required>
-                        <select name="produto-interesse" required>
-                            <option value="">Selecione o Produto de Interesse</option>
-                            <option value="Macarons">Macarons Especiais</option>
-                            <option value="Chocolates">Chocolates Gourmet</option>
-                            <option value="Doces-Finoss">Doces Finos Variados</option>
-                        </select>
-                        <input type="number" placeholder="Quantidade Estimada (unidades)" min="10" required>
-                        <div style="margin: 10px 0;">
-                            <label><input type="radio" name="pagamento" value="Transferencia" required> Transferência Internacional</label>
-                            <label><input type="radio" name="pagamento" value="Cartao"> Cartão Corporativo</label>
-                        </div>
-                        <button type="submit" class="btn-destaque">Solicitar Cotação</button>
-                        <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
-                    </form>
-                </div>
+
+        <div class="internacional-grid">
+            <div class="internacional-info">
+                <p>Nossa logística combina embalagens isotérmicas, gel refrigerante de alta eficiência e parceiros de transporte especializados para garantir que seus produtos cheguem com frescor e apresentação perfeitos.</p>
+                <div class="mapa-placeholder" aria-hidden="true">Mapa / Rotas Refrigeradas (visualização)</div>
+                <p class="nota">Atendimento dedicado para exportação: cotações personalizadas, documentação aduaneira e opções de transporte.</p>
             </div>
-            <div class="mercosul-item">
-                <button class="pais-btn">Uruguai</button>
-                <div class="mercosul-form-container">
-                    <form onsubmit="enviarCotacaoMercosul(event, 'Uruguai')">
-                        <input type="email" placeholder="Seu E-mail Profissional" required>
-                        <select name="produto-interesse" required>
-                             <option value="">Selecione o Produto de Interesse</option>
-                            <option value="Macarons">Macarons Especiais</option>
-                            <option value="Chocolates">Chocolates Gourmet</option>
-                            <option value="Doces-Finoss">Doces Finos Variados</option>
-                        </select>
-                        <input type="number" placeholder="Quantidade Estimada (unidades)" min="10" required>
-                         <div style="margin: 10px 0;">
-                            <label><input type="radio" name="pagamento" value="Transferencia" required> Transferência Internacional</label>
-                            <label><input type="radio" name="pagamento" value="Cartao"> Cartão Corporativo</label>
+
+            <div class="internacional-lista">
+                <h3>Países do Mercosul (Cotação Direta)</h3>
+
+                <div class="pais-lista">
+                    <details class="pais-item">
+                        <summary>Argentina</summary>
+                        <div class="pais-form">
+                            <form onsubmit="enviarCotacaoMercosul(event, 'Argentina')">
+                                <input type="email" name="email" placeholder="Seu E-mail Profissional" required>
+                                <select name="produto-interesse" required>
+                                    <option value="">Selecione o Produto de Interesse</option>
+                                    <option value="Macarons">Macarons Especiais</option>
+                                    <option value="Chocolates">Chocolates Gourmet</option>
+                                    <option value="Doces-Finos">Doces Finos Variados</option>
+                                </select>
+                                <input type="number" name="quantidade" placeholder="Quantidade Estimada (unidades)" min="10" required>
+                                <div class="opcoes-pagamento-form">
+                                    <label><input type="radio" name="pagamento-arg" value="Transferencia" required> Transferência Internacional</label>
+                                    <label><input type="radio" name="pagamento-arg" value="Cartao"> Cartão Corporativo</label>
+                                </div>
+                                <button type="submit" class="btn-destaque">Solicitar Cotação</button>
+                                <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
+                            </form>
                         </div>
-                        <button type="submit" class="btn-destaque">Solicitar Cotação</button>
-                        <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
-                    </form>
+                    </details>
+
+                    <details class="pais-item">
+                        <summary>Uruguai</summary>
+                        <div class="pais-form">
+                            <form onsubmit="enviarCotacaoMercosul(event, 'Uruguai')">
+                                <input type="email" name="email" placeholder="Seu E-mail Profissional" required>
+                                <select name="produto-interesse" required>
+                                    <option value="">Selecione o Produto de Interesse</option>
+                                    <option value="Macarons">Macarons Especiais</option>
+                                    <option value="Chocolates">Chocolates Gourmet</option>
+                                    <option value="Doces-Finos">Doces Finos Variados</option>
+                                </select>
+                                <input type="number" name="quantidade" placeholder="Quantidade Estimada (unidades)" min="10" required>
+                                <div class="opcoes-pagamento-form">
+                                    <label><input type="radio" name="pagamento-uru" value="Transferencia" required> Transferência Internacional</label>
+                                    <label><input type="radio" name="pagamento-uru" value="Cartao"> Cartão Corporativo</label>
+                                </div>
+                                <button type="submit" class="btn-destaque">Solicitar Cotação</button>
+                                <p class="msg-sucesso-cotacao" style="display: none; color: green; margin-top: 10px;">Solicitação enviada com sucesso!</p>
+                            </form>
+                        </div>
+                    </details>
+                </div>
+
+                <div style="margin-top: 20px; text-align: center;">
+                    <p style="margin-bottom:8px; font-weight:600;">Seu país não está na lista?</p>
+                    <button id="abrir-outros-paises" class="btn-destaque">Cotação para Outros Países</button>
                 </div>
             </div>
         </div>
-
-        <p style="margin-top: 40px; font-weight: 600;">Seu país não está na lista?</p>
-        <button id="abrir-outros-paises" class="btn-destaque">Cotação para Outros Países</button>
     </section>
 
 
