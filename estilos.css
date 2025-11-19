@@ -8,7 +8,6 @@
     --cor-borda: #E0E0E0;          
 }
 
-/* Tipografia e Estilos Gerais */
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -93,7 +92,7 @@ nav a:hover { color: var(--cor-acento-rosa); }
     margin-right: 5px;
 }
 
-/* 2. Banner Principal (Com Imagem de Fundo) */
+
 .banner-principal {
     text-align: center;
     padding: 120px 50px;
@@ -102,7 +101,7 @@ nav a:hover { color: var(--cor-acento-rosa); }
     color: var(--cor-neutra-clara);
     position: relative;
 }
-/* Overlay escuro para melhorar a leitura do texto */
+
 .banner-principal::before {
     content: '';
     position: absolute;
@@ -121,11 +120,13 @@ nav a:hover { color: var(--cor-acento-rosa); }
 }
 
 .home-banner {
-    /* Simulação de imagem gourmet sofisticada */
+    
+    
     background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Gourmet+Chocolate+e+Frutas'); 
 }
 .produtos-banner {
-    /* Simulação de imagem mais clara para a página de produtos */
+ 
+    
     background-image: url('https://via.placeholder.com/1500x300/F5DEB3/5A352A?text=Galeria+de+Doces+Finos+e+Flores');
     padding: 80px 50px;
 }
@@ -136,11 +137,10 @@ nav a:hover { color: var(--cor-acento-rosa); }
     color: var(--cor-neutra-clara);
 }
 .banner-principal .subtitulo {
-    color: #FFECF4; /* Tom de rosa claro para o texto secundário */
+    color: #FFECF4;
 }
 
 
-/* 3. Seção Informações (Missão e Contato) */
 .secao-info {
     padding: 80px 100px;
     text-align: center;
@@ -164,9 +164,8 @@ nav a:hover { color: var(--cor-acento-rosa); }
     border-left: 3px solid var(--cor-acento-rosa);
 }
 
-/* 4. Novo: Depoimentos */
 .secao-depoimentos {
-    background-color: var(--cor-acento-marrom); /* Fundo com cor escura */
+    background-color: var(--cor-acento-marrom); 
     color: var(--cor-neutra-fundo);
     padding: 80px 100px;
     text-align: center;
@@ -204,11 +203,10 @@ nav a:hover { color: var(--cor-acento-rosa); }
 }
 
 
-/* 5. Produtos (Página produtos.html) */
-/* Estilos ANTIGOS (.produtos-grid, .produto-card, .btn-comprar, .preco-produto) removidos para dar lugar aos NOVOS */
+
 .main-produtos {
     padding: 60px 80px;
-    /* Manter o background-color: var(--cor-neutra-clara); */
+  
 }
 
 h3 p {
@@ -216,7 +214,7 @@ h3 p {
 }
 
 
-/* 6. Seção de Garantia */
+
 .garantia {
     padding: 70px 80px;
     text-align: center;
@@ -247,7 +245,6 @@ h3 p {
     font-size: 1.3em;
 }
 
-/* 7. Internacional */
 .internacional {
     background-color: var(--cor-neutra-fundo);
     padding: 40px 60px;
@@ -269,7 +266,7 @@ h3 p {
     background-color: var(--cor-neutra-clara);
 }
 
-/* Novo layout em grid para a seção internacional */
+
 .internacional-grid {
     display: grid;
     grid-template-columns: 1fr 420px;
@@ -298,7 +295,7 @@ h3 p {
     margin-bottom: 10px;
 }
 
-/* Lista de países como acordeão acessível */
+
 .pais-lista {
     display: flex;
     flex-direction: column;
@@ -325,7 +322,7 @@ h3 p {
     color: var(--cor-acento-rosa);
 }
 
-.pais-item summary::-webkit-details-marker { display: none; } /* remove marcador padrão */
+.pais-item summary::-webkit-details-marker { display: none; } 
 
 .pais-item .pais-form {
     padding: 14px 16px 18px 16px;
@@ -335,7 +332,7 @@ h3 p {
     border-radius: 0 0 8px 8px;
 }
 
-/* Formulário dentro do acordeão */
+
 .pais-form input[type="email"],
 .pais-form select,
 .pais-form input[type="number"] {
@@ -361,13 +358,11 @@ h3 p {
 }
 .opcoes-pagamento-form input { margin-right: 6px; }
 
-/* Ajustes visuais do botão dentro do acordeão */
 .pais-form .btn-destaque {
     width: 100%;
     padding: 12px;
 }
 
-/* Nota informativa */
 .internacional .nota {
     margin-top: 12px;
     font-size: 0.95em;
@@ -399,7 +394,6 @@ h3 p {
     box-sizing: border-box; 
 }
 
-/* 9. Rodapé Detalhado */
 footer {
     background-color: var(--cor-acento-marrom);
     color: var(--cor-neutra-clara);
@@ -445,7 +439,7 @@ footer {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* 10. Formas de Pagamento */
+
 .opcoes-pagamento {
     display: flex;
     justify-content: center;
@@ -470,11 +464,10 @@ footer {
 }
 
 .opcoes-pagamento span:hover {
-    background-color: #FFF0F5; /* Rosa bem suave */
+    background-color: #FFF0F5; 
 }
 
 
-/* --- ESTILOS DO MODAL (CARRINHO, CHECKOUT, CONFIRMAÇÃO) --- */
 .modal {
     display: none; 
     position: fixed;
@@ -590,7 +583,6 @@ footer {
     color: var(--cor-texto-principal);
 }
 
-/* Estilos específicos para o Checkout */
 #formulario-checkout input[type="text"],
 #formulario-checkout input[type="email"] {
     width: 100%;
@@ -602,19 +594,16 @@ footer {
 }
 
 
-/* --- ESTILOS ESPECÍFICOS PARA SOBRE.HTML --- */
-
-/* 1. Banner da Página Sobre */
 .sobre-banner {
-    /* Usar um fundo que remete à elegância e história */
+  
     background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Vintage+Detalhes+Embalagens');
     padding: 100px 50px;
 }
 .sobre-banner::before {
-    background: rgba(90, 53, 42, 0.4); /* Marrom semi-transparente do tema */
+    background: rgba(90, 53, 42, 0.4); 
 }
 
-/* 2. Seção de História/Narrativa */
+
 .secao-narrativa {
     padding: 80px 100px;
     text-align: left;
@@ -647,7 +636,6 @@ footer {
     font-weight: 700;
 }
 
-/* 3. Seção de Valores/Pilares */
 .secao-pilares {
     padding: 60px 100px;
     background-color: var(--cor-neutra-fundo);
@@ -671,7 +659,7 @@ footer {
 }
 
 .pilar-card:hover {
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15); /* Sombra suave rosa */
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15); 
     border-color: var(--cor-acento-rosa);
 }
 
@@ -683,7 +671,6 @@ footer {
 }
 
 
-/* Responsividade */
 @media (max-width: 768px) {
     header, .secao-info, .internacional, .garantia, .secao-depoimentos {
         padding-left: 20px;
@@ -704,7 +691,6 @@ footer {
     .modal-conteudo { margin: 20% auto; }
     .carrinho-acoes { justify-content: center; }
     
-    /* Responsividade para a seção Sobre */
     .secao-narrativa, .secao-pilares {
         padding-left: 20px;
         padding-right: 20px;
@@ -728,14 +714,12 @@ footer {
 }
 
 
-/* --- NOVOS ESTILOS PARA PRODUTOS.HTML (SOLICITADOS PELO CLIENTE) --- */
 
-/* 1. Fundo Branco na Página Produtos */
+
 .pagina-produtos-branco {
-    background-color: var(--cor-neutra-clara); /* Branco Puro - #FFFFFF */
+    background-color: var(--cor-neutra-clara); 
 }
 
-/* 2. Título Centralizado e Grande */
 .titulo-produtos-novo {
     font-family: 'Playfair Display', serif;
     font-size: 3.5em; /* Grande */
@@ -745,7 +729,6 @@ footer {
     padding-top: 20px;
 }
 
-/* 3. Lista de Produtos Vertical e Centralizada */
 .lista-produtos-novo {
     display: flex;
     flex-direction: column; /* Vertical */
@@ -753,13 +736,12 @@ footer {
     gap: 40px;
 }
 
-/* 4. Estilo do Card de Produto */
 .produto-item-novo {
     display: flex;
     align-items: center;
     gap: 30px;
     padding: 30px;
-    width: 800px; /* Largura definida para centralizar e ter um layout horizontal dentro */
+    width: 800px; 
     max-width: 95%;
     background-color: var(--cor-neutra-fundo); /* Creme Suave */
     border: 1px solid var(--cor-borda);
@@ -805,13 +787,12 @@ footer {
 .acoes-produto {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Alinha o botão e o controle à direita */
+    align-items: flex-end; 
     gap: 15px;
     flex-shrink: 0;
-    width: 180px; /* Largura fixa para as ações */
+    width: 180px; 
 }
 
-/* 5. Estilo do Seletor de Quantidade (- 2 +) */
 .quantidade-controle {
     display: flex;
     align-items: center;
@@ -858,16 +839,15 @@ footer {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s;
-    font-family: 'DynaPuff', system-ui; /* Usar a fonte personalizada do antigo botão */
+    font-family: 'DynaPuff', system-ui; 
     font-size: 1.1em;
-    box-shadow: 0 0 8px #ff99cc; /* Manter o box-shadow do antigo botão */
+    box-shadow: 0 0 8px #ff99cc; 
 }
 
 .btn-adicionar:hover {
     background-color: var(--cor-acento-marrom);
 }
 
-/* Ajustes de Responsividade para o novo layout */
 @media (max-width: 900px) {
     .titulo-produtos-novo {
         font-size: 2.5em;
@@ -889,7 +869,7 @@ footer {
         align-items: center;
     }
     .quantidade-controle {
-        max-width: 200px; /* Aumentar um pouco em mobile */
+        max-width: 200px; 
         width: 100%;
         justify-content: space-around;
     }

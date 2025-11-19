@@ -1,26 +1,17 @@
-// Ativa o modo estrito para código mais seguro
 "use strict";
 
-// --- VARIÁVEIS GLOBAIS DE ESTADO ---
-// O carrinho é persistido no LocalStorage para simular a manutenção entre páginas
 let carrinho = JSON.parse(localStorage.getItem('carrinhoReinoDoce')) || []; 
 
-// --- FUNÇÕES DE UTILIDADE ---
-
-/** Formata um valor numérico para o padrão monetário brasileiro. */
 function formatarMoeda(valor) {
     return `R$ ${valor.toFixed(2).replace('.', ',')}`;
 }
 
-/** Salva o estado atual do carrinho no LocalStorage e atualiza o contador. */
 function salvarCarrinho() {
     localStorage.setItem('carrinhoReinoDoce', JSON.stringify(carrinho));
     atualizarContadorCarrinho();
 }
 
-// --- FUNÇÕES DE CARRINHO E CHECKOUT ---
 
-/** Calcula o total de unidades e atualiza o display no header. */
 function atualizarContadorCarrinho() {
     const contadorElemento = document.getElementById('contador-carrinho');
     if (!contadorElemento) return;
@@ -29,8 +20,7 @@ function atualizarContadorCarrinho() {
     contadorElemento.textContent = totalItens;
 }
 
-/** Adiciona um produto ao carrinho ou aumenta sua quantidade. */
-function adicionarAoCarrinho(nome, preco, quantidade) { // MODIFICADO: Aceita a quantidade selecionada
+function adicionarAoCarrinho(nome, preco, quantidade) { 
     const precoFloat = parseFloat(preco);
     const quantidadeInt = parseInt(quantidade);
     
@@ -43,7 +33,7 @@ function adicionarAoCarrinho(nome, preco, quantidade) { // MODIFICADO: Aceita a 
     const itemExistente = carrinho.find(item => item.nome === nome);
 
     if (itemExistente) {
-        itemExistente.quantidade += quantidadeInt; // Soma a quantidade selecionada
+        itemExistente.quantidade += quantidadeInt;
     } else {
         carrinho.push({ nome, preco: precoFloat, quantidade: quantidadeInt });
     }
@@ -52,7 +42,6 @@ function adicionarAoCarrinho(nome, preco, quantidade) { // MODIFICADO: Aceita a 
     alert(`"${nome}" (${quantidadeInt}x) adicionado ao carrinho!`);
 }
 
-/** Remove uma unidade de um item do carrinho, ou o item completamente se for o último. */
 function removerItemCarrinho(nome) {
     const itemIndex = carrinho.findIndex(item => item.nome === nome);
     
@@ -68,12 +57,10 @@ function removerItemCarrinho(nome) {
     renderizarCarrinho();
 }
 
-/** Calcula o valor total dos itens no carrinho. */
 function calcularTotalCarrinho() {
     return carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
 }
 
-/** Renderiza a lista de itens e os totais no modal do carrinho. */
 function renderizarCarrinho() {
     const listaCarrinhoElemento = document.getElementById('itens-carrinho-lista');
     const subtotalElemento = document.getElementById('carrinho-subtotal');
@@ -124,7 +111,6 @@ function renderizarCarrinho() {
     });
 }
 
-/** Limpa o carrinho de compras. */
 function limparCarrinho() {
     if (confirm("Tem certeza que deseja limpar o carrinho?")) {
         carrinho = [];
@@ -133,7 +119,6 @@ function limparCarrinho() {
     }
 }
 
-/** Simula o processo de checkout e exibe o modal de confirmação. */
 function processarCheckout(event) {
     event.preventDefault();
 
@@ -165,27 +150,23 @@ function processarCheckout(event) {
         <p style="margin-top: 15px;">A confirmação detalhada foi enviada para ${email}.</p>
     `;
     
-    // Limpa o carrinho
     carrinho = [];
     salvarCarrinho();
     
-    // Fecha o checkout e abre a confirmação
     fecharModal(modalCheckout);
     abrirModal(modalConfirmacao);
     
     if (formularioCheckout) formularioCheckout.reset(); 
 }
 
-// Expõe a função para ser usada no atributo onsubmit do HTML
 window.processarCheckout = processarCheckout;
 
 
-// --- FUNÇÕES DE MODAL ---
 
 function abrirModal(modal) {
     if (modal) {
         modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Evita rolagem da página principal
+        document.body.style.overflow = 'hidden'; 
     }
 }
 
@@ -196,9 +177,8 @@ function fecharModal(modal) {
     }
 }
 
-// --- NOVO: LÓGICA DO SELETOR DE QUANTIDADE (+/-) ---
 function configurarControlesQuantidade() {
-    // Handle the '-' button click
+  
     document.querySelectorAll('.btn-diminuir').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const nome = e.target.dataset.nome;
@@ -213,7 +193,6 @@ function configurarControlesQuantidade() {
         });
     });
 
-    // Handle the '+' button click
     document.querySelectorAll('.btn-aumentar').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const nome = e.target.dataset.nome;
@@ -227,10 +206,6 @@ function configurarControlesQuantidade() {
     });
 }
 
-
-// --- LÓGICA DA SEÇÃO INTERNACIONAL (Logística Global - index.html) ---
-
-/** Lógica de Acordeão para Países do Mercosul. */
 function configurarAcordeaoMercosul() {
     const listaMercosul = document.getElementById('mercosul-lista');
     if (!listaMercosul) return;
@@ -243,13 +218,11 @@ function configurarAcordeaoMercosul() {
         const formContainer = item.querySelector('.mercosul-form-container');
         const isCurrentlyOpen = formContainer.style.display === 'block';
 
-        // Fecha todos os outros forms abertos
         document.querySelectorAll('.mercosul-form-container').forEach(container => {
             container.style.display = 'none';
             container.closest('.mercosul-item').classList.remove('aberto');
         });
 
-        // Abre ou fecha o form clicado
         if (!isCurrentlyOpen) {
             formContainer.style.display = 'block';
             item.classList.add('aberto');
@@ -259,8 +232,6 @@ function configurarAcordeaoMercosul() {
         }
     });
 }
-
-/** Simula o envio de cotação para o Mercosul. */
 function enviarCotacaoMercosul(event, pais) {
     event.preventDefault();
     
@@ -289,7 +260,6 @@ function enviarCotacaoMercosul(event, pais) {
         if(msgSucessoCotacao) msgSucessoCotacao.style.display = 'none';
         if (submitBtn) submitBtn.disabled = false;
         
-        // Fecha o acordeão após a simulação
         const item = form.closest('.mercosul-item');
         if (item) {
             const formContainer = item.querySelector('.mercosul-form-container');
@@ -303,10 +273,8 @@ function enviarCotacaoMercosul(event, pais) {
     }, 2000);
 }
 
-// Expõe a função para ser usada no atributo onsubmit do HTML
 window.enviarCotacaoMercosul = enviarCotacaoMercosul;
 
-/** Lógica para o Modal 'Outros Países'. */
 function configurarModalOutrosPaises() {
     const abrirOutrosPaisesBtn = document.getElementById('abrir-outros-paises');
     const modalOutrosPaises = document.getElementById('modal-outros-paises');
@@ -358,14 +326,13 @@ function configurarModalOutrosPaises() {
 }
 
 
-// --- LÓGICA DO FORMULÁRIO DE CONTATO (index.html) ---
 
 function enviarContato(event) {
     event.preventDefault(); 
     
     const nome = document.getElementById('nome').value;
     const msgSucesso = document.getElementById('msg-sucesso');
-    const corAcentoRosa = '#FF69B4'; // Do estilos.css
+    const corAcentoRosa = '#FF69B4'; 
 
     if(msgSucesso) {
         msgSucesso.style.display = 'block';
@@ -380,14 +347,11 @@ function enviarContato(event) {
     }, 1500);
 }
 
-// Expõe a função para ser usada no atributo onsubmit do HTML
 window.enviarContato = enviarContato;
 
 
-// --- INICIALIZAÇÃO E OUVINTES GERAIS ---
 
 function inicializarEventos() {
-    // Referências aos modais e botões principais
     const modalCarrinho = document.getElementById('modal-carrinho');
     const abrirCarrinhoBtn = document.getElementById('abrir-carrinho');
     const fecharCarrinhoBtn = document.getElementById('fechar-carrinho');
@@ -400,10 +364,8 @@ function inicializarEventos() {
     const modalConfirmacao = document.getElementById('modal-confirmacao');
     const fecharConfirmacaoBtn = document.getElementById('fechar-confirmacao');
     
-    // Novo: Botões "Adicionar ao carrinho"
     const botoesAdicionar = document.querySelectorAll('.btn-adicionar'); 
 
-    // 1. Ouvintes do Carrinho
     if (abrirCarrinhoBtn) {
         abrirCarrinhoBtn.addEventListener('click', () => {
             renderizarCarrinho();
@@ -414,7 +376,6 @@ function inicializarEventos() {
     if (fecharCarrinhoBtn) fecharCarrinhoBtn.addEventListener('click', () => fecharModal(modalCarrinho));
     if (limparCarrinhoBtn) limparCarrinhoBtn.addEventListener('click', limparCarrinho);
     
-    // 2. Ouvintes do Checkout
     if (finalizarCompraBtn) {
         finalizarCompraBtn.addEventListener('click', () => {
             if (carrinho.length > 0) {
@@ -428,24 +389,20 @@ function inicializarEventos() {
     
     if (fecharCheckoutBtn) fecharCheckoutBtn.addEventListener('click', () => fecharModal(modalCheckout));
     
-    // 3. Ouvintes da Confirmação
     if (fecharConfirmacaoBtn) fecharConfirmacaoBtn.addEventListener('click', () => fecharModal(modalConfirmacao));
 
-    // 4. Ouvintes dos Botões de Compra (produtos.html) - NOVO LÓGICA
     botoesAdicionar.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const nome = e.target.dataset.nome;
-            // Pega o elemento pai para obter o preço
+         
             const itemElement = e.target.closest('.produto-item-novo');
             const preco = itemElement ? itemElement.dataset.preco : null; 
 
-            // Pega a quantidade do display (novo seletor)
             const quantidadeDisplay = document.querySelector(`.quantidade-display[data-nome="${nome}"]`);
             const quantidade = quantidadeDisplay ? parseInt(quantidadeDisplay.textContent) : 1;
             
             if (preco) {
                 adicionarAoCarrinho(nome, preco, quantidade); 
-                // Reseta a quantidade no display para '1' após adicionar
                 if (quantidadeDisplay) {
                     quantidadeDisplay.textContent = '1';
                 }
@@ -455,21 +412,18 @@ function inicializarEventos() {
         });
     });
     
-    // 5. Fechamento de modais clicando fora
+
     window.addEventListener('click', (event) => {
         if (event.target === modalCarrinho) fecharModal(modalCarrinho);
         if (event.target === modalCheckout) fecharModal(modalCheckout);
         if (event.target === modalConfirmacao) fecharModal(modalConfirmacao);
     });
     
-    // 6. Configurações de Páginas Específicas
     configurarAcordeaoMercosul();
     configurarModalOutrosPaises();
-    configurarControlesQuantidade(); // NOVO: Configura os botões de + e -
+    configurarControlesQuantidade(); 
     
-    // Inicializa o contador ao carregar
     atualizarContadorCarrinho();
 }
 
-// Inicia todo o script após o DOM carregar
 document.addEventListener('DOMContentLoaded', inicializarEventos);
