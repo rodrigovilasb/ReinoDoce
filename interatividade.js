@@ -30,18 +30,26 @@ function atualizarContadorCarrinho() {
 }
 
 /** Adiciona um produto ao carrinho ou aumenta sua quantidade. */
-function adicionarAoCarrinho(nome, preco) {
+function adicionarAoCarrinho(nome, preco, quantidade) { // MODIFICADO: Aceita a quantidade selecionada
     const precoFloat = parseFloat(preco);
+    const quantidadeInt = parseInt(quantidade);
+    
+    // Safety check
+    if (quantidadeInt <= 0) {
+        alert("A quantidade deve ser de pelo menos 1 item.");
+        return; 
+    } 
+
     const itemExistente = carrinho.find(item => item.nome === nome);
 
     if (itemExistente) {
-        itemExistente.quantidade++;
+        itemExistente.quantidade += quantidadeInt; // Soma a quantidade selecionada
     } else {
-        carrinho.push({ nome, preco: precoFloat, quantidade: 1 });
+        carrinho.push({ nome, preco: precoFloat, quantidade: quantidadeInt });
     }
 
     salvarCarrinho();
-    alert(`"${nome}" adicionado ao carrinho!`);
+    alert(`"${nome}" (${quantidadeInt}x) adicionado ao carrinho!`);
 }
 
 /** Remove uma unidade de um item do carrinho, ou o item completamente se for o último. */
@@ -186,6 +194,37 @@ function fecharModal(modal) {
         modal.style.display = 'none';
         document.body.style.overflow = '';
     }
+}
+
+// --- NOVO: LÓGICA DO SELETOR DE QUANTIDADE (+/-) ---
+function configurarControlesQuantidade() {
+    // Handle the '-' button click
+    document.querySelectorAll('.btn-diminuir').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const nome = e.target.dataset.nome;
+            const display = document.querySelector(`.quantidade-display[data-nome="${nome}"]`);
+            if (!display) return;
+            
+            let quantidade = parseInt(display.textContent);
+            if (quantidade > 1) {
+                quantidade--;
+                display.textContent = quantidade;
+            }
+        });
+    });
+
+    // Handle the '+' button click
+    document.querySelectorAll('.btn-aumentar').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const nome = e.target.dataset.nome;
+            const display = document.querySelector(`.quantidade-display[data-nome="${nome}"]`);
+            if (!display) return;
+            
+            let quantidade = parseInt(display.textContent);
+            quantidade++;
+            display.textContent = quantidade;
+        });
+    });
 }
 
 
@@ -361,7 +400,8 @@ function inicializarEventos() {
     const modalConfirmacao = document.getElementById('modal-confirmacao');
     const fecharConfirmacaoBtn = document.getElementById('fechar-confirmacao');
     
-    const botoesComprar = document.querySelectorAll('.btn-comprar');
+    // Novo: Botões "Adicionar ao carrinho"
+    const botoesAdicionar = document.querySelectorAll('.btn-adicionar'); 
 
     // 1. Ouvintes do Carrinho
     if (abrirCarrinhoBtn) {
@@ -391,12 +431,27 @@ function inicializarEventos() {
     // 3. Ouvintes da Confirmação
     if (fecharConfirmacaoBtn) fecharConfirmacaoBtn.addEventListener('click', () => fecharModal(modalConfirmacao));
 
-    // 4. Ouvintes dos Botões de Compra (produtos.html)
-    botoesComprar.forEach(btn => {
+    // 4. Ouvintes dos Botões de Compra (produtos.html) - NOVO LÓGICA
+    botoesAdicionar.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const nome = e.target.dataset.nome;
-            const preco = e.target.dataset.preco;
-            adicionarAoCarrinho(nome, preco);
+            // Pega o elemento pai para obter o preço
+            const itemElement = e.target.closest('.produto-item-novo');
+            const preco = itemElement ? itemElement.dataset.preco : null; 
+
+            // Pega a quantidade do display (novo seletor)
+            const quantidadeDisplay = document.querySelector(`.quantidade-display[data-nome="${nome}"]`);
+            const quantidade = quantidadeDisplay ? parseInt(quantidadeDisplay.textContent) : 1;
+            
+            if (preco) {
+                adicionarAoCarrinho(nome, preco, quantidade); 
+                // Reseta a quantidade no display para '1' após adicionar
+                if (quantidadeDisplay) {
+                    quantidadeDisplay.textContent = '1';
+                }
+            } else {
+                 alert("Erro: Preço do produto não encontrado.");
+            }
         });
     });
     
@@ -410,6 +465,7 @@ function inicializarEventos() {
     // 6. Configurações de Páginas Específicas
     configurarAcordeaoMercosul();
     configurarModalOutrosPaises();
+    configurarControlesQuantidade(); // NOVO: Configura os botões de + e -
     
     // Inicializa o contador ao carregar
     atualizarContadorCarrinho();

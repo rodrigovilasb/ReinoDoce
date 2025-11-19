@@ -8,9 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');</style>
 </head>
-<body>
-
-    <header>
+<body class="pagina-produtos-branco"> <header>
         <div class="logo">
             <h1>Reino Doce</h1>
         </div>
@@ -26,110 +24,96 @@
         </button>
     </header>
 
-    <section class="banner-principal produtos-banner">
-        <h2>Coleção Gourmet | Sabores Únicos</h2>
-        <p class="subtitulo">Do Brasil para o mundo. O luxo de ingredientes finos, agora em sua casa.</p>
-    </section>
-
     <main class="main-produtos">
-        <div class="produtos-grid" id="produtos">
+        <h2 class="titulo-produtos-novo">Os melhores doces em um só lugar</h2>
+
+        <div class="lista-produtos-novo" id="produtos">
             
-            <div class="produto-card">
-                <img src="img/Brigadeiro reino doce.png" alt="Brigadeiro Belga Noir">
-                <h3>Brigadeiro Belga Noir</h3>
-                <p>Intenso cacau 70%. Perfeito equilíbrio amargo-doce.</p>
-                <p class="preco-produto"><strong>R$ 8,50</strong></p>
-                <button class="btn-comprar" data-nome="Brigadeiro Belga Noir" data-preco="8.50">Adicionar</button>
+            <div class="produto-item-novo" data-preco="28.50">
+                <img src="img/brigadeiro.png" alt="Brigadeiro gourmet">
+                <div class="info-produto">
+                    <h3>Brigadeiro gourmet</h3>
+                    <p class="preco-descricao">R$ 28,50 (1kg)</p>
+                    <p class="descricao">O clássico brasileiro aprimorado, com chocolate nobre e toque de cacau 70%.</p>
+                </div>
+                <div class="acoes-produto">
+                    <div class="quantidade-controle">
+                        <button class="btn-diminuir" data-nome="Brigadeiro gourmet">-</button>
+                        <span class="quantidade-display" data-nome="Brigadeiro gourmet">1</span>
+                        <button class="btn-aumentar" data-nome="Brigadeiro gourmet">+</button>
+                    </div>
+                    <button class="btn-adicionar" data-nome="Brigadeiro gourmet">Adicionar ao carrinho</button>
+                </div>
             </div>
 
-            <div class="produto-card">
-                <img src="img/rosa floral reino doce (1).png" alt="Macaron de Rosas e Champagne">
-                <h3>Macaron Rosas & Champagne</h3>
-                <p>Elegância francesa, recheio com toque floral.</p>
-                <p class="preco-produto"><strong>R$ 15,00</strong></p>
-                <button class="btn-comprar" data-nome="Macaron Rosas & Champagne" data-preco="15.00">Adicionar</button>
+            <div class="produto-item-novo" data-preco="10.00">
+                <img src="img/beijinho.png" alt="Beijinho de coco">
+                <div class="info-produto">
+                    <h3>Beijinho de coco</h3>
+                    <p class="preco-descricao">R$ 10,00 (400g)</p>
+                    <p class="descricao">Feito com coco fresco ralado e leite condensado de primeira qualidade.</p>
+                </div>
+                <div class="acoes-produto">
+                    <div class="quantidade-controle">
+                        <button class="btn-diminuir" data-nome="Beijinho de coco">-</button>
+                        <span class="quantidade-display" data-nome="Beijinho de coco">1</span>
+                        <button class="btn-aumentar" data-nome="Beijinho de coco">+</button>
+                    </div>
+                    <button class="btn-adicionar" data-nome="Beijinho de coco">Adicionar ao carrinho</button>
+                </div>
             </div>
 
-            <div class="produto-card">
-                <img src="img/Brownie  reino doce.png" alt="Brownie Trilogia">
-                <h3>Brownie Trilogia</h3>
-                <p>Camadas de chocolate ao leite, meio amargo e branco.</p>
-                <p class="preco-produto"><strong>R$ 18,00</strong></p>
-                <button class="btn-comprar" data-nome="Brownie Trilogia" data-preco="18.00">Adicionar</button>
-            </div>
-            
-            <div class="produto-card">
-                <img src="img/Pao de mel  reino doce.png" alt="Pão de Mel Gourmet">
-                <h3>Pão de Mel com Especiarias</h3>
-                <p>Massa úmida, recheio de Doce de Leite Premium e cobertura Belga.</p>
-                <p class="preco-produto"><strong>R$ 12,50</strong></p>
-                <button class="btn-comprar" data-nome="Pão de Mel Especiarias" data-preco="12.50">Adicionar</button>
-            </div>
-
-            <div class="produto-card">
-                <img src="img/Tartelet reino doce.png" alt="Tartelette de Pistache">
-                <h3>Tartelette de Pistache</h3>
-                <p>Massa sablée, creme de pistache artesanal e finalização com ouro comestível.</p>
-                <p class="preco-produto"><strong>R$ 25,00</strong></p>
-                <button class="btn-comprar" data-nome="Tartelette de Pistache" data-preco="25.00">Adicionar</button>
+            <div class="produto-item-novo" data-preco="12.00">
+                <img src="img/goma.png" alt="Bala de goma">
+                <div class="info-produto">
+                    <h3>Bala de goma</h3>
+                    <p class="preco-descricao">R$ 12,00 (32g)</p>
+                    <p class="descricao">Balas coloridas e saborosas com a textura macia que derrete na boca.</p>
+                </div>
+                <div class="acoes-produto">
+                    <div class="quantidade-controle">
+                        <button class="btn-diminuir" data-nome="Bala de goma">-</button>
+                        <span class="quantidade-display" data-nome="Bala de goma">1</span>
+                        <button class="btn-aumentar" data-nome="Bala de goma">+</button>
+                    </div>
+                    <button class="btn-adicionar" data-nome="Bala de goma">Adicionar ao carrinho</button>
+                </div>
             </div>
 
-            <div class="produto-card">
-                <img src="img/trufa reino doce.png" alt="Trufas de Champagne">
-                <h3>Trufa de Champagne Rosé (Caixa c/ 4)</h3>
-                <p>Ganache aerada com infusão de Champagne Rosé. Embalagem de luxo.</p>
-                <p class="preco-produto"><strong>R$ 45,00</strong></p>
-                <button class="btn-comprar" data-nome="Trufa Champagne Rosé" data-preco="45.00">Adicionar</button>
-            </div>
-            
-            <div class="produto-card">
-                <img src="img/cakepopreino doce.png" alt="Cake Pop de Baunilha Azure">
-                <h3>Cake Pop Baunilha & Limão Siciliano</h3>
-                <p>Bolinho no palito, cobertura azul royal e recheio refrescante.</p>
-                <p class="preco-produto"><strong>R$ 12,00</strong></p>
-                <button class="btn-comprar" data-nome="Cake Pop Baunilha & Limão" data-preco="10.00">Adicionar</button>
-            </div>
-
-            <div class="produto-card">
-                <img src="img/geleia doce.png" alt="Mini Cheesecake Frutas Vermelhas">
-                <h3>Mini Cheesecake Frutas Vermelhas</h3>
-                <p>Base crocante, cream cheese premium e geleia artesanal de morango e amora.</p>
-                <p class="preco-produto"><strong>R$ 22,00</strong></p>
-                <button class="btn-comprar" data-nome="Mini Cheesecake Frutas" data-preco="22.00">Adicionar</button>
-            </div>
-            
-            <div class="produto-card">
-                <img src="img/palha Reinodoce.png" alt="Palha Italiana Amêndoa">
-                <h3>Palha Italiana de Amêndoa e Flor de Sal</h3>
-                <p>Biscoito Maizena, chocolate nobre e amêndoas torradas, com toque salgado.</p>
-                <p class="preco-produto"><strong>R$ 9,50</strong></p>
-                <button class="btn-comprar" data-nome="Palha Italiana Amêndoa" data-preco="9.50">Adicionar</button>
-            </div>
-            
-            <div class="produto-card">
-                <img src="img/alfajor Reinodoce.png" alt="Alfajor de Doce de Leite">
-                <h3>Alfajor Supremo de Dulce de Leche</h3>
-                <p>Biscoito macio, recheio generoso de doce de leite argentino e banho de chocolate branco.</p>
-                <p class="preco-produto"><strong>R$ 16,00</strong></p>
-                <button class="btn-comprar" data-nome="Alfajor Supremo" data-preco="16.00">Adicionar</button>
-            </div>
-            
-            <div class="produto-card">
-                <img src="img/lavanda Reinodoce.png" alt="Trufa de Lavanda e Mel Silvestre">
-                <h3>Trufa de Lavanda & Mel Silvestre</h3>
-                <p>Ganache de chocolate branco e infusão de lavanda fresca com mel puro.</p>
-                <p class="preco-produto"><strong>R$ 19,00</strong></p>
-                <button class="btn-comprar" data-nome="Trufa Lavanda & Mel" data-preco="19.00">Adicionar</button>
+            <div class="produto-item-novo" data-preco="13.00">
+                <img src="img/pedemlk.jpg" alt="Pé de moleque">
+                <div class="info-produto">
+                    <h3>Pé de moleque</h3>
+                    <p class="preco-descricao">R$ 13,00 (400g)</p>
+                    <p class="descricao">O tradicional doce de amendoim crocante, com receita artesanal.</p>
+                </div>
+                <div class="acoes-produto">
+                    <div class="quantidade-controle">
+                        <button class="btn-diminuir" data-nome="Pé de moleque">-</button>
+                        <span class="quantidade-display" data-nome="Pé de moleque">1</span>
+                        <button class="btn-aumentar" data-nome="Pé de moleque">+</button>
+                    </div>
+                    <button class="btn-adicionar" data-nome="Pé de moleque">Adicionar ao carrinho</button>
+                </div>
             </div>
 
-            <div class="produto-card">
-                <img src="img/damasvo Reinodoce.png" alt="Torta de Damasco e Especiarias">
-                <h3>Torta de Damasco e Especiarias</h3>
-                <p>Base crocante, recheio cremoso de damasco e toque de cardamomo e noz-moscada.</p>
-                <p class="preco-produto"><strong>R$ 42,00</strong></p>
-                <button class="btn-comprar" data-nome="Torta Damasco & Especiarias" data-preco="28.00">Adicionar</button>
+            <div class="produto-item-novo" data-preco="3.15">
+                <img src="img/trufa.png" alt="Trufa de chocolate">
+                <div class="info-produto">
+                    <h3>Trufa de chocolate</h3>
+                    <p class="preco-descricao">R$ 3,15 (12,5g)</p>
+                    <p class="descricao">Trufa cremosa de chocolate amargo, polvilhada com cacau em pó.</p>
+                </div>
+                <div class="acoes-produto">
+                    <div class="quantidade-controle">
+                        <button class="btn-diminuir" data-nome="Trufa de chocolate">-</button>
+                        <span class="quantidade-display" data-nome="Trufa de chocolate">1</span>
+                        <button class="btn-aumentar" data-nome="Trufa de chocolate">+</button>
+                    </div>
+                    <button class="btn-adicionar" data-nome="Trufa de chocolate">Adicionar ao carrinho</button>
+                </div>
             </div>
-            
+
         </div>
     </main>
 

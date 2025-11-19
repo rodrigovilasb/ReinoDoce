@@ -205,66 +205,10 @@ nav a:hover { color: var(--cor-acento-rosa); }
 
 
 /* 5. Produtos (Página produtos.html) */
+/* Estilos ANTIGOS (.produtos-grid, .produto-card, .btn-comprar, .preco-produto) removidos para dar lugar aos NOVOS */
 .main-produtos {
     padding: 60px 80px;
-    background-color: var(--cor-neutra-clara);
-}
-.produtos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-}
-.produto-card {
-    background-color: var(--cor-neutra-fundo);
-    border: 1px solid var(--cor-borda);
-    border-radius: 8px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.produto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-.produto-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: none;
-}
-.produto-card h3 {
-    font-size: 1.5em;
-    color: var(--cor-acento-rosa);
-}
-.preco-produto strong {
-    font-size: 1.4em;
-    color: var(--cor-acento-marrom);
-    display: block;
-    margin: 10px 0;
-}
-.produto-card .btn-comprar {
-    display: block;
-    width: 90%;
-    margin: 20px auto 0;
-    background-color: var(--cor-acento-rosa);
-    padding: 12px 20px;
-    text-transform: none;
-}
-
-.btn-comprar{
-    color: white;
-    font-family: "DynaPuff", system-ui;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: bold;
-    font-variation-settings:
-    "wdth" 200;
-    font-size: 1.1em;
-    border: none;
-    box-shadow: 0 0 8px #ff99cc;
+    /* Manter o background-color: var(--cor-neutra-clara); */
 }
 
 h3 p {
@@ -781,4 +725,172 @@ footer {
     .internacional-lista { order: 2; }
     .internacional-info { order: 1; }
     .mapa-placeholder { display: none; }
+}
+
+
+/* --- NOVOS ESTILOS PARA PRODUTOS.HTML (SOLICITADOS PELO CLIENTE) --- */
+
+/* 1. Fundo Branco na Página Produtos */
+.pagina-produtos-branco {
+    background-color: var(--cor-neutra-clara); /* Branco Puro - #FFFFFF */
+}
+
+/* 2. Título Centralizado e Grande */
+.titulo-produtos-novo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em; /* Grande */
+    color: var(--cor-acento-marrom);
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+
+/* 3. Lista de Produtos Vertical e Centralizada */
+.lista-produtos-novo {
+    display: flex;
+    flex-direction: column; /* Vertical */
+    align-items: center; /* Centralizado horizontalmente */
+    gap: 40px;
+}
+
+/* 4. Estilo do Card de Produto */
+.produto-item-novo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    width: 800px; /* Largura definida para centralizar e ter um layout horizontal dentro */
+    max-width: 95%;
+    background-color: var(--cor-neutra-fundo); /* Creme Suave */
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s;
+}
+.produto-item-novo:hover {
+    box-shadow: 0 6px 18px rgba(255, 105, 180, 0.2);
+}
+
+.produto-item-novo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.info-produto {
+    flex-grow: 1;
+}
+
+.info-produto h3 {
+    font-size: 1.8em;
+    color: var(--cor-acento-rosa);
+    margin-bottom: 5px;
+}
+
+.preco-descricao {
+    font-weight: 600;
+    color: var(--cor-acento-marrom);
+    margin: 5px 0 10px;
+    font-size: 1.1em;
+}
+
+.descricao {
+    color: var(--cor-texto-secundario);
+    font-size: 0.95em;
+    margin-top: 0;
+}
+
+.acoes-produto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinha o botão e o controle à direita */
+    gap: 15px;
+    flex-shrink: 0;
+    width: 180px; /* Largura fixa para as ações */
+}
+
+/* 5. Estilo do Seletor de Quantidade (- 2 +) */
+.quantidade-controle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 120px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantidade-controle button {
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-acento-marrom);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.2s;
+    line-height: 1;
+}
+
+.quantidade-controle button:hover {
+    background-color: var(--cor-neutra-fundo);
+}
+
+.quantidade-display {
+    padding: 8px 10px;
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    min-width: 20px;
+    text-align: center;
+}
+
+.btn-adicionar {
+    display: block;
+    width: 100%;
+    background-color: var(--cor-acento-rosa);
+    color: var(--cor-neutra-clara);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-family: 'DynaPuff', system-ui; /* Usar a fonte personalizada do antigo botão */
+    font-size: 1.1em;
+    box-shadow: 0 0 8px #ff99cc; /* Manter o box-shadow do antigo botão */
+}
+
+.btn-adicionar:hover {
+    background-color: var(--cor-acento-marrom);
+}
+
+/* Ajustes de Responsividade para o novo layout */
+@media (max-width: 900px) {
+    .titulo-produtos-novo {
+        font-size: 2.5em;
+    }
+    .produto-item-novo {
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+        padding: 20px;
+        gap: 15px;
+    }
+    .produto-item-novo img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+    .acoes-produto {
+        width: 100%;
+        align-items: center;
+    }
+    .quantidade-controle {
+        max-width: 200px; /* Aumentar um pouco em mobile */
+        width: 100%;
+        justify-content: space-around;
+    }
 }
