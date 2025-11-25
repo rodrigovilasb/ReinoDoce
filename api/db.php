@@ -3,7 +3,7 @@ function getPDO() {
     $host = "localhost";
     $port = "3306";
     $user = "root";
-    $senha = "";
+    $senha = "root";
     $banco = "reinodoce";
     
     try {
