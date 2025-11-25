@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhe Conosco | Reino Doce</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <button class="logo-btn" type="button" onclick="location.href='index.html'" aria-label="Ir para a página inicial">Reino Doce</button>
+        </div>
+        <nav>
+            <a href="sobre.html">Nossa História</a>
+            <a href="produtos.html">Coleção Gourmet</a>
+            <a href="trabalhe.html">Trabalhe Conosco</a>
+            <a href="index.html#internacional">Logística Global</a>
+            <a href="index.html#garantia">Nossa Garantia</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+        <button class="carrinho-btn" id="abrir-carrinho" title="Ver Carrinho">
+            <span class="icone">🛍️</span> Carrinho (<span id="contador-carrinho">0</span>)
+        </button>
+    </header>
+
+    <section class="trabalhe-banner">
+        <h2>Junte-se ao melhor time do setor de doce</h2>
+        <p style="color: rgba(255,255,255,0.9); margin-top:10px;">Envie sua candidatura e venha construir momentos doces conosco.</p>
+    </section>
+
+    <section class="trabalhe-section">
+        <form id="form-trabalhe" class="trabalhe-form" onsubmit="enviarFormularioTrabalhe(event)">
+            <div class="trabalhe-grid">
+                <div class="full">
+                    <label for="localizacao">Informe sua localização</label>
+                    <select id="localizacao" required>
+                        <option value="">Selecione</option>
+                        <option>São Paulo, SP</option>
+                        <option>Curitiba, PR</option>
+                        <option>Cuiabá, MT</option>
+                        <option>Natal, RN</option>
+                        <option>Belém, PA</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="nome-completo">Nome completo</label>
+                    <input type="text" id="nome-completo" required>
+                </div>
+
+                <div>
+                    <label for="nascimento">Data de nascimento</label>
+                    <input type="date" id="nascimento" required>
+                </div>
+
+                <div>
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" inputmode="numeric" placeholder="000.000.000-00" required>
+                </div>
+
+                <div>
+                    <label for="telefone">Número de telefone</label>
+                    <input type="text" id="telefone" inputmode="tel" placeholder="(00) 00000-0000" required>
+                </div>
+
+                <div class="full">
+                    <label for="email-candidato">E-mail</label>
+                    <input type="email" id="email-candidato" required>
+                </div>
+
+                <div class="full">
+                    <label>Função desejada</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="funcao" value="Serviço técnico"> Serviço técnico</label>
+                        <label><input type="checkbox" name="funcao" value="Auxiliar de marketing"> Auxiliar de marketing</label>
+                        <label><input type="checkbox" name="funcao" value="Auxiliar de contratos"> Auxiliar de contratos</label>
+                        <label><input type="checkbox" name="funcao" value="Auxiliar de cobranças"> Auxiliar de cobranças</label>
+                        <label><input type="checkbox" name="funcao" value="Auxiliar de produção e compras"> Auxiliar de produção e compras</label>
+                        <label><input type="checkbox" name="funcao" value="Contador"> Contador</label>
+                        <label><input type="checkbox" name="funcao" value="Vendedor"> Vendedor</label>
+                        <label><input type="checkbox" name="funcao" value="Operador de máquina"> Operador de máquina</label>
+                        <label><input type="checkbox" name="funcao" value="Supervisor de linha"> Supervisor de linha</label>
+                        <label><input type="checkbox" name="funcao" value="Almoxarife"> Almoxarife</label>
+                    </div>
+                </div>
+
+                <div class="full">
+                    <label>Formação acadêmica</label>
+                    <div class="opcoes-radios">
+                        <label><input type="radio" name="formacao" id="formacao-fundamental" value="Ensino fundamental completo"> Ensino fundamental completo</label>
+                        <label><input type="radio" name="formacao" id="formacao-medio" value="Ensino médio completo"> Ensino médio completo</label>
+                        <label><input type="radio" name="formacao" id="formacao-superior" value="Ensino superior completo"> Ensino superior completo</label>
+                        <label><input type="radio" name="formacao" id="formacao-nenhuma" value="Não possuo formação"> Não possuo formação</label>
+                    </div>
+                </div>
+
+                <div id="formacao-area-container" class="campo-condicional full">
+                    <label for="formacao-area">Área</label>
+                    <input type="text" id="formacao-area" placeholder="Área do curso (ex.: Administração, Engenharia, etc.)">
+                </div>
+
+                <div class="full">
+                    <label>Possui experiência profissional anterior?</label>
+                    <div class="opcoes-radios">
+                        <label><input type="radio" name="experiencia" id="exp-sim" value="Sim"> Sim</label>
+                        <label><input type="radio" name="experiencia" id="exp-nao" value="Não"> Não</label>
+                    </div>
+                </div>
+
+                <div id="exp-qual-container" class="campo-condicional full">
+                    <label for="exp-qual">Qual?</label>
+                    <textarea id="exp-qual" rows="4" placeholder="Descreva sua experiência anterior"></textarea>
+                </div>
+
+                <div class="full">
+                    <button type="submit" class="btn-destaque">Enviar candidatura</button>
+                    <p id="trabalhe-msg" style="display:none; margin-top:12px; font-weight:700;"></p>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- reutilizo modais/carrinho já existentes (opcional) -->
+    <!-- ...existing code... (se desejar, manter os modais do site) ... -->
+
+    <script src="interatividade.js"></script>
+</body>
+</html>

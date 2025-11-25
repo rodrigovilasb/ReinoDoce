@@ -1,8 +1,8 @@
 :root {
-    --cor-acento-rosa: #FF69B4;    /* Rosa Choque/Médio - Destaque */
-    --cor-acento-marrom: #5A352A;  /* Marrom Escuro Sóbrio (Chocolate) */
-    --cor-neutra-fundo: #F8F4F0;   /* Creme Suave - Fundo Geral (Menos branco) */
-    --cor-neutra-clara: #FFFFFF;   /* Branco Puro - Cartões/Headers */
+    --cor-acento-rosa: #FF69B4;   
+    --cor-acento-marrom: #5A352A; 
+    --cor-neutra-fundo: #F8F4F0;  
+    --cor-neutra-clara: #FFFFFF;   
     --cor-texto-principal: #222222; 
     --cor-texto-secundario: #666666; 
     --cor-borda: #E0E0E0;          
@@ -714,7 +714,83 @@ footer {
 }
 
 
+/* Página Trabalhe Conosco */
+.trabalhe-banner {
+    text-align: center;
+    padding: 100px 20px;
+    color: var(--cor-neutra-clara);
+    position: relative;
+    background-image: url('img/profissionais.jpg'); /* imagem indicada na aba "Arquivos" */
+    background-size: cover;
+    background-position: center;
+    min-height: 260px;
+}
+.trabalhe-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* meia-escura */
+    z-index: 1;
+}
+.trabalhe-banner * { position: relative; z-index: 2; }
+.trabalhe-banner h2 {
+    font-size: 2.2em;
+    margin: 0 0 12px;
+    color: #FFF;
+}
 
+/* Formulário Trabalhe Conosco */
+.trabalhe-section {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+}
+.trabalhe-form {
+    width: 100%;
+    max-width: 900px;
+    background: var(--cor-neutra-clara);
+    border: 1px solid var(--cor-borda);
+    padding: 28px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+.trabalhe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+.trabalhe-grid .full { grid-column: 1 / -1; }
+.trabalhe-form label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--cor-acento-marrom); }
+.trabalhe-form input[type="text"],
+.trabalhe-form input[type="email"],
+.trabalhe-form input[type="date"],
+.trabalhe-form select,
+.trabalhe-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background: var(--cor-neutra-clara);
+}
+.trabalhe-form .opcoes-checkboxes,
+.trabalhe-form .opcoes-radios {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.trabalhe-form .campo-condicional { display: none; margin-bottom: 10px; }
+
+/* destaque botão enviar */
+.trabalhe-form .btn-destaque { width: 220px; margin-top: 8px; }
+
+/* responsivo */
+@media (max-width: 900px) {
+    .trabalhe-grid { grid-template-columns: 1fr; }
+    .trabalhe-form { padding: 18px; }
+}
 
 .pagina-produtos-branco {
     background-color: var(--cor-neutra-clara); 
@@ -873,4 +949,23 @@ footer {
         width: 100%;
         justify-content: space-around;
     }
+}
+
+/* botão do logo no cabeçalho (texto) */
+.logo-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: var(--cor-acento-marrom);
+    font-weight: 700;
+    line-height: 1;
+}
+.logo-btn:focus {
+    outline: 3px solid var(--cor-acento-rosa);
+    outline-offset: 3px;
+    border-radius: 4px;
 }

@@ -11,7 +11,6 @@ function salvarCarrinho() {
     atualizarContadorCarrinho();
 }
 
-
 function atualizarContadorCarrinho() {
     const contadorElemento = document.getElementById('contador-carrinho');
     if (!contadorElemento) return;
@@ -75,7 +74,7 @@ function renderizarCarrinho() {
     const total = calcularTotalCarrinho();
     
     subtotalElemento.textContent = formatarMoeda(total);
-    totalGeralElemento.textContent = formatarMoeda(total);
+    if(totalGeralElemento) totalGeralElemento.textContent = formatarMoeda(total);
     if(checkoutTotalElement) {
         checkoutTotalElement.textContent = formatarMoeda(total);
     }
@@ -131,32 +130,74 @@ function processarCheckout(event) {
     const cep = document.getElementById('checkout-cep').value;
     const endereco = document.getElementById('checkout-endereco').value;
     const total = calcularTotalCarrinho();
-    const numeroPedido = Math.floor(Math.random() * 900000) + 100000;
-    
-    const detalhesDiv = document.getElementById('confirmacao-detalhes');
-    
-    let listaItensHtml = carrinho.map(item => 
-        `<li>${item.nome} (${item.quantidade}x) - ${formatarMoeda(item.preco * item.quantidade)}</li>`
-    ).join('');
-    
-    detalhesDiv.innerHTML = `
-        <p><strong>Pedido Nº:</strong> <span style="color: #FF69B4;">${numeroPedido}</span></p>
-        <p><strong>Total Pago:</strong> <span style="font-size: 1.3em; color: #5A352A; font-weight: 700;">${formatarMoeda(total)}</span></p>
-        <p><strong>Cliente:</strong> ${nome}</p>
-        <p><strong>Endereço de Entrega:</strong> ${endereco}, CEP ${cep}</p>
-        <br>
-        <p><strong>Itens Comprados:</strong></p>
-        <ul style="list-style: disc; margin-left: 20px;">${listaItensHtml}</ul>
-        <p style="margin-top: 15px;">A confirmação detalhada foi enviada para ${email}.</p>
-    `;
-    
-    carrinho = [];
-    salvarCarrinho();
-    
-    fecharModal(modalCheckout);
-    abrirModal(modalConfirmacao);
-    
-    if (formularioCheckout) formularioCheckout.reset(); 
+
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
+
+    // Monta payload para enviar ao servidor
+    const payload = {
+        cliente: {
+            nome: nome,
+            email: email,
+            cep: cep,
+            endereco: endereco
+            // você pode adicionar cpf/telefone se quiser coletar no checkout
+        },
+        itens: carrinho.map(item => ({
+            nome: item.nome,
+            quantidade: item.quantidade,
+            preco_unit: item.preco
+        })),
+        total: total
+    };
+
+    // Chamada ao endpoint PHP que grava no banco (API)
+    fetch('api/checkout.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        if (!data || !data.success) {
+            const msg = data && data.error ? data.error : 'Erro ao processar pedido.';
+            alert(msg);
+            return;
+        }
+
+        // Monta detalhes para exibir no modal de confirmação
+        const detalhesDiv = document.getElementById('confirmacao-detalhes');
+        const itensHtml = carrinho.map(it => `<li>${it.nome} (${it.quantidade}x) - ${formatarMoeda(it.preco * it.quantidade)}</li>`).join('');
+        if (detalhesDiv) {
+            detalhesDiv.innerHTML = `
+                <p><strong>Pedido Nº:</strong> <span style="color: #FF69B4;">${data.id_pedv}</span></p>
+                <p><strong>Nota Fiscal Nº:</strong> <span style="color: #5A352A;">${data.numero_nf} (Série ${data.serie_nf})</span></p>
+                <p><strong>Total Pago:</strong> <span style="font-size: 1.3em; color: #5A352A; font-weight: 700;">${formatarMoeda(data.valor_total)}</span></p>
+                <p><strong>Cliente:</strong> ${nome}</p>
+                <p><strong>Endereço de Entrega:</strong> ${endereco}, CEP ${cep}</p>
+                <br>
+                <p><strong>Itens Comprados:</strong></p>
+                <ul style="list-style: disc; margin-left: 20px;">${itensHtml}</ul>
+                <p style="margin-top: 15px;">Confirmação enviada para ${email}.</p>
+            `;
+        }
+
+        // Limpa carrinho local e atualiza UI
+        carrinho = [];
+        salvarCarrinho();
+        renderizarCarrinho();
+
+        if (formularioCheckout) formularioCheckout.reset();
+
+        fecharModal(modalCheckout);
+        abrirModal(modalConfirmacao);
+    })
+    .catch(err => {
+        console.error('Erro fetch checkout:', err);
+        alert('Erro de comunicação com o servidor. Tente novamente.');
+    });
 }
 
 window.processarCheckout = processarCheckout;
@@ -351,6 +392,95 @@ window.enviarContato = enviarContato;
 
 
 
+function aplicarMascaraCPF(input) {
+    if (!input) return;
+    let v = input.value.replace(/\D/g, '').slice(0,11);
+    v = v.replace(/^(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/^(\d{3}\.\d{3})(\d)/, '$1.$2');
+    v = v.replace(/^(\d{3}\.\d{3}\.\d{3})(\d{1,2})/, '$1-$2');
+    input.value = v;
+}
+
+function aplicarMascaraTelefone(input) {
+    if (!input) return;
+    let v = input.value.replace(/\D/g, '').slice(0,11);
+    if (v.length > 10) {
+        v = v.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+    } else if (v.length > 6) {
+        v = v.replace(/^(\d{2})(\d{4,5})(\d{0,4})$/, '($1) $2-$3');
+    } else if (v.length > 2) {
+        v = v.replace(/^(\d{2})(\d+)/, '($1) $2');
+    }
+    input.value = v;
+}
+
+function configurarFormularioTrabalhe() {
+    const cpf = document.getElementById('cpf');
+    const telefone = document.getElementById('telefone');
+    const formacaoRadios = document.querySelectorAll('input[name="formacao"]');
+    const experienciaRadios = document.querySelectorAll('input[name="experiencia"]');
+    const form = document.getElementById('form-trabalhe');
+
+    if (cpf) {
+        cpf.addEventListener('input', (e) => aplicarMascaraCPF(e.target));
+        cpf.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+            e.target.value = paste;
+            aplicarMascaraCPF(e.target);
+        });
+    }
+
+    if (telefone) {
+        telefone.addEventListener('input', (e) => aplicarMascaraTelefone(e.target));
+        telefone.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+            e.target.value = paste;
+            aplicarMascaraTelefone(e.target);
+        });
+    }
+
+    if (formacaoRadios) {
+        formacaoRadios.forEach(r => r.addEventListener('change', () => {
+            const superiorChecked = document.getElementById('formacao-superior') && document.getElementById('formacao-superior').checked;
+            const areaContainer = document.getElementById('formacao-area-container');
+            if (areaContainer) areaContainer.style.display = superiorChecked ? 'block' : 'none';
+        }));
+    }
+
+    if (experienciaRadios) {
+        experienciaRadios.forEach(r => r.addEventListener('change', () => {
+            const sim = document.getElementById('exp-sim') && document.getElementById('exp-sim').checked;
+            const qualContainer = document.getElementById('exp-qual-container');
+            if (qualContainer) qualContainer.style.display = sim ? 'block' : 'none';
+        }));
+    }
+
+    window.enviarFormularioTrabalhe = function(event) {
+        event.preventDefault();
+        const form = document.getElementById('form-trabalhe');
+        if (!form) return;
+        
+        const nome = form.querySelector('#nome-completo').value || '';
+        const msg = document.getElementById('trabalhe-msg');
+        
+        if (msg) {
+            msg.style.display = 'block';
+            msg.style.color = '#2e7d32';
+            msg.textContent = `Obrigado, ${nome || 'candidato'}. Sua candidatura foi enviada com sucesso!`;
+        }
+        
+        setTimeout(() => {
+            form.reset();
+            const areaContainer = document.getElementById('formacao-area-container');
+            const qualContainer = document.getElementById('exp-qual-container');
+            if (areaContainer) areaContainer.style.display = 'none';
+            if (qualContainer) qualContainer.style.display = 'none';
+        }, 1000);
+    };
+}
+
 function inicializarEventos() {
     const modalCarrinho = document.getElementById('modal-carrinho');
     const abrirCarrinhoBtn = document.getElementById('abrir-carrinho');
@@ -364,22 +494,36 @@ function inicializarEventos() {
     const modalConfirmacao = document.getElementById('modal-confirmacao');
     const fecharConfirmacaoBtn = document.getElementById('fechar-confirmacao');
     
-    const botoesAdicionar = document.querySelectorAll('.btn-adicionar'); 
+    const botoesAdicionar = document.querySelectorAll('.btn-adicionar');
 
-    if (abrirCarrinhoBtn) {
-        abrirCarrinhoBtn.addEventListener('click', () => {
+    if (abrirCarrinhoBtn && modalCarrinho) {
+        abrirCarrinhoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             renderizarCarrinho();
             abrirModal(modalCarrinho);
         });
     }
     
-    if (fecharCarrinhoBtn) fecharCarrinhoBtn.addEventListener('click', () => fecharModal(modalCarrinho));
-    if (limparCarrinhoBtn) limparCarrinhoBtn.addEventListener('click', limparCarrinho);
+    if (fecharCarrinhoBtn && modalCarrinho) {
+        fecharCarrinhoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            fecharModal(modalCarrinho);
+        });
+    }
     
-    if (finalizarCompraBtn) {
-        finalizarCompraBtn.addEventListener('click', () => {
+    if (limparCarrinhoBtn) {
+        limparCarrinhoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            limparCarrinho();
+        });
+    }
+    
+    if (finalizarCompraBtn && modalCheckout) {
+        finalizarCompraBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             if (carrinho.length > 0) {
                 fecharModal(modalCarrinho);
+                renderizarCarrinho();
                 abrirModal(modalCheckout);
             } else {
                 alert("Seu carrinho está vazio!");
@@ -387,31 +531,37 @@ function inicializarEventos() {
         });
     }
     
-    if (fecharCheckoutBtn) fecharCheckoutBtn.addEventListener('click', () => fecharModal(modalCheckout));
+    if (fecharCheckoutBtn && modalCheckout) {
+        fecharCheckoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            fecharModal(modalCheckout);
+        });
+    }
     
-    if (fecharConfirmacaoBtn) fecharConfirmacaoBtn.addEventListener('click', () => fecharModal(modalConfirmacao));
+    if (fecharConfirmacaoBtn && modalConfirmacao) {
+        fecharConfirmacaoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            fecharModal(modalConfirmacao);
+        });
+    }
 
     botoesAdicionar.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            e.preventDefault();
             const nome = e.target.dataset.nome;
-         
             const itemElement = e.target.closest('.produto-item-novo');
-            const preco = itemElement ? itemElement.dataset.preco : null; 
-
+            const preco = itemElement ? itemElement.dataset.preco : null;
             const quantidadeDisplay = document.querySelector(`.quantidade-display[data-nome="${nome}"]`);
             const quantidade = quantidadeDisplay ? parseInt(quantidadeDisplay.textContent) : 1;
             
             if (preco) {
-                adicionarAoCarrinho(nome, preco, quantidade); 
-                if (quantidadeDisplay) {
-                    quantidadeDisplay.textContent = '1';
-                }
+                adicionarAoCarrinho(nome, preco, quantidade);
+                if (quantidadeDisplay) quantidadeDisplay.textContent = '1';
             } else {
-                 alert("Erro: Preço do produto não encontrado.");
+                alert("Erro: Preço do produto não encontrado.");
             }
         });
     });
-    
 
     window.addEventListener('click', (event) => {
         if (event.target === modalCarrinho) fecharModal(modalCarrinho);
@@ -422,7 +572,9 @@ function inicializarEventos() {
     configurarAcordeaoMercosul();
     configurarModalOutrosPaises();
     configurarControlesQuantidade(); 
-    
+
+    configurarFormularioTrabalhe(); // <-- adicionada
+
     atualizarContadorCarrinho();
 }
 
