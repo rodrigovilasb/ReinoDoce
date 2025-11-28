@@ -119,8 +119,10 @@ CREATE TABLE Nota_Fiscal_Item (
     FOREIGN KEY (id_prod) REFERENCES Produto(id_prod)
 );
 
-create table Usuario (
-    id_user INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE usuario (
+    id_usuario INT NOT NULL AUTO_INCREMENT,
     login VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL
+    senha VARCHAR(255) NOT NULL,
+    nivel VARCHAR(20) DEFAULT 'Vendedor',
+    PRIMARY KEY (id_usuario)
 );
