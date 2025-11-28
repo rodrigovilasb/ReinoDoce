@@ -22,8 +22,8 @@ function atualizarContadorCarrinho() {
 function adicionarAoCarrinho(nome, preco, quantidade) { 
     const precoFloat = parseFloat(preco);
     const quantidadeInt = parseInt(quantidade);
+
     
-    // Safety check
     if (quantidadeInt <= 0) {
         alert("A quantidade deve ser de pelo menos 1 item.");
         return; 
@@ -143,7 +143,6 @@ function processarCheckout(event) {
             email: email,
             cep: cep,
             endereco: endereco
-            // você pode adicionar cpf/telefone se quiser coletar no checkout
         },
         itens: carrinho.map(item => ({
             nome: item.nome,
@@ -153,8 +152,8 @@ function processarCheckout(event) {
         total: total
     };
 
-    // Chamada ao endpoint PHP que grava no banco (API)
-    fetch('api/checkout.php', {
+    // Chamada ao endpoint PHP que grava no banco (PHP)
+    fetch('php/checkout.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -167,7 +166,7 @@ function processarCheckout(event) {
             return;
         }
 
-        // Monta detalhes para exibir no modal de confirmação
+        // Monta detalhes para exibir no registro de confirmação
         const detalhesDiv = document.getElementById('confirmacao-detalhes');
         const itensHtml = carrinho.map(it => `<li>${it.nome} (${it.quantidade}x) - ${formatarMoeda(it.preco * it.quantidade)}</li>`).join('');
         if (detalhesDiv) {
@@ -184,7 +183,7 @@ function processarCheckout(event) {
             `;
         }
 
-        // Limpa carrinho local e atualiza UI
+        // Limpa carrinho local e atualiza o design para ficar lindo, perfeito, maravilhoso, do jeitinho que a reinodoce e o ulisses gosta:)
         carrinho = [];
         salvarCarrinho();
         renderizarCarrinho();

@@ -118,3 +118,9 @@ CREATE TABLE Nota_Fiscal_Item (
     FOREIGN KEY (id_nf) REFERENCES Nota_Fiscal(id_nf),
     FOREIGN KEY (id_prod) REFERENCES Produto(id_prod)
 );
+
+create table Usuario (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
+);

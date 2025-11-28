@@ -33,7 +33,6 @@ h3 { font-size: 2em; margin-bottom: 15px; color: var(--cor-acento-marrom); }
     margin-bottom: 40px;
 }
 
-/* Botão de Destaque */
 .btn-destaque {
     display: inline-block;
     background-color: var(--cor-acento-rosa);
@@ -55,7 +54,6 @@ h3 { font-size: 2em; margin-bottom: 15px; color: var(--cor-acento-marrom); }
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* 1. Cabeçalho */
 header {
     background-color: var(--cor-neutra-clara);
     padding: 15px 80px;
@@ -92,7 +90,6 @@ nav a:hover { color: var(--cor-acento-rosa); }
     margin-right: 5px;
 }
 
-
 .banner-principal {
     text-align: center;
     padding: 120px 50px;
@@ -120,13 +117,9 @@ nav a:hover { color: var(--cor-acento-rosa); }
 }
 
 .home-banner {
-    
-    
     background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Gourmet+Chocolate+e+Frutas'); 
 }
 .produtos-banner {
- 
-    
     background-image: url('https://via.placeholder.com/1500x300/F5DEB3/5A352A?text=Galeria+de+Doces+Finos+e+Flores');
     padding: 80px 50px;
 }
@@ -139,7 +132,6 @@ nav a:hover { color: var(--cor-acento-rosa); }
 .banner-principal .subtitulo {
     color: #FFECF4;
 }
-
 
 .secao-info {
     padding: 80px 100px;
@@ -202,18 +194,13 @@ nav a:hover { color: var(--cor-acento-rosa); }
     margin: 0;
 }
 
-
-
 .main-produtos {
     padding: 60px 80px;
-  
 }
 
 h3 p {
     text-align: justify;
 }
-
-
 
 .garantia {
     padding: 70px 80px;
@@ -266,7 +253,6 @@ h3 p {
     background-color: var(--cor-neutra-clara);
 }
 
-
 .internacional-grid {
     display: grid;
     grid-template-columns: 1fr 420px;
@@ -294,7 +280,6 @@ h3 p {
     box-shadow: 0 6px 18px rgba(90,53,42,0.06);
     margin-bottom: 10px;
 }
-
 
 .pais-lista {
     display: flex;
@@ -332,7 +317,6 @@ h3 p {
     border-radius: 0 0 8px 8px;
 }
 
-
 .pais-form input[type="email"],
 .pais-form select,
 .pais-form input[type="number"] {
@@ -369,7 +353,6 @@ h3 p {
     color: var(--cor-texto-secundario);
 }
 
-/* 8. Contato */
 .destaque-contato {
     color: var(--cor-acento-marrom);
     font-weight: 700;
@@ -381,7 +364,7 @@ h3 p {
     padding: 30px;
     background-color: var(--cor-neutra-clara);
     border: 1px solid var(--cor-borda);
-    margin: 30px auto 0; /* Centraliza o formulário */
+    margin: 30px auto 0;
 }
 .formulario-contato input[type="text"],
 .formulario-contato input[type="email"],
@@ -439,7 +422,6 @@ footer {
     color: rgba(255, 255, 255, 0.6);
 }
 
-
 .opcoes-pagamento {
     display: flex;
     justify-content: center;
@@ -466,7 +448,6 @@ footer {
 .opcoes-pagamento span:hover {
     background-color: #FFF0F5; 
 }
-
 
 .modal {
     display: none; 
@@ -593,16 +574,13 @@ footer {
     box-sizing: border-box; 
 }
 
-
 .sobre-banner {
-  
     background-image: url('https://via.placeholder.com/1500x500/A0522D/FFFFFF?text=Fundo+Vintage+Detalhes+Embalagens');
     padding: 100px 50px;
 }
 .sobre-banner::before {
     background: rgba(90, 53, 42, 0.4); 
 }
-
 
 .secao-narrativa {
     padding: 80px 100px;
@@ -670,7 +648,6 @@ footer {
     margin-top: 10px;
 }
 
-
 @media (max-width: 768px) {
     header, .secao-info, .internacional, .garantia, .secao-depoimentos {
         padding-left: 20px;
@@ -713,14 +690,12 @@ footer {
     .mapa-placeholder { display: none; }
 }
 
-
-/* Página Trabalhe Conosco */
 .trabalhe-banner {
     text-align: center;
     padding: 100px 20px;
     color: var(--cor-neutra-clara);
     position: relative;
-    background-image: url('img/profissionais.jpg'); /* imagem indicada na aba "Arquivos" */
+    background-image: url('img/imagem.\ Trabalhe\ conosco.jpg'); 
     background-size: cover;
     background-position: center;
     min-height: 260px;
@@ -729,7 +704,7 @@ footer {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.45); /* meia-escura */
+    background: rgba(0,0,0,0.45);
     z-index: 1;
 }
 .trabalhe-banner * { position: relative; z-index: 2; }
@@ -739,7 +714,6 @@ footer {
     color: #FFF;
 }
 
-/* Formulário Trabalhe Conosco */
 .trabalhe-section {
     padding: 50px 20px;
     display: flex;
@@ -783,10 +757,8 @@ footer {
 }
 .trabalhe-form .campo-condicional { display: none; margin-bottom: 10px; }
 
-/* destaque botão enviar */
 .trabalhe-form .btn-destaque { width: 220px; margin-top: 8px; }
 
-/* responsivo */
 @media (max-width: 900px) {
     .trabalhe-grid { grid-template-columns: 1fr; }
     .trabalhe-form { padding: 18px; }
@@ -798,7 +770,7 @@ footer {
 
 .titulo-produtos-novo {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5em; /* Grande */
+    font-size: 3.5em;
     color: var(--cor-acento-marrom);
     text-align: center;
     margin-bottom: 50px;
@@ -807,8 +779,8 @@ footer {
 
 .lista-produtos-novo {
     display: flex;
-    flex-direction: column; /* Vertical */
-    align-items: center; /* Centralizado horizontalmente */
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
 }
 
@@ -819,7 +791,7 @@ footer {
     padding: 30px;
     width: 800px; 
     max-width: 95%;
-    background-color: var(--cor-neutra-fundo); /* Creme Suave */
+    background-color: var(--cor-neutra-fundo);
     border: 1px solid var(--cor-borda);
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -951,7 +923,6 @@ footer {
     }
 }
 
-/* botão do logo no cabeçalho (texto) */
 .logo-btn {
     background: none;
     border: none;
@@ -968,4 +939,10 @@ footer {
     outline: 3px solid var(--cor-acento-rosa);
     outline-offset: 3px;
     border-radius: 4px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
 }
